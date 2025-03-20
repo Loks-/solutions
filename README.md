@@ -1,5 +1,5 @@
-# Competitions Library
+# Solutions Library
 
-Library and solutions for different coding competitions like Hackerrank or Google CodeJam.
+Solutions for different coding competitions like Hackerrank or Google CodeJam.
 
 Freely distributed under MIT licence.
