@@ -8,7 +8,7 @@ int main_pottery_lottery() {
   cin >> T;
   for (unsigned it = 1; it <= T; ++it) {
     unsigned day, k, bet;
-    HeapMinOnTop<pair<unsigned, unsigned>> h;
+    MinHeap<pair<unsigned, unsigned>> h;
     vector<unsigned> vmask(21, 0);
     for (unsigned j = 0; j < 100; ++j) {
       cin >> day;

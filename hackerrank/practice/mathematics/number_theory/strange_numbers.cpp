@@ -11,7 +11,7 @@ int main_strange_numbers() {
     return l;
   };
   vector<uint64_t> v(1, 0);
-  HeapMinOnTop<uint64_t> q;
+  MinHeap<uint64_t> q;
   for (unsigned i = 1; i < 10; ++i) q.Add(i);
   for (; !q.Empty();) {
     uint64_t u = q.Extract();

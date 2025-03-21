@@ -70,7 +70,7 @@ int main_2219__kdtree() {
     s0.t = t;
     s0.v1(0) = 1;
     s0.Eval(vcost);
-    HeapMaxOnTop<State> h;
+    MaxHeap<State> h;
     TTree tree;
     tree.Init(TPoint(), TPoint(t * t), 0u);
     TPVector pv1(1u);

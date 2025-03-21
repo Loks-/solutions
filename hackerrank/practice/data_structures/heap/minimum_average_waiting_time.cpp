@@ -5,8 +5,8 @@
 
 int main_minimum_average_waiting_time() {
   uint64_t N, a, l, sum_a = 0, sum_f = 0, time = 0;
-  HeapMinOnTop<uint64_t> q_current_orders;
-  HeapMinOnTop<pair<uint64_t, uint64_t>> q_all_orders;
+  MinHeap<uint64_t> q_current_orders;
+  MinHeap<pair<uint64_t, uint64_t>> q_all_orders;
   cin >> N;
   for (unsigned i = 0; i < N; ++i) {
     cin >> a >> l;

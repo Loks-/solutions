@@ -10,7 +10,7 @@ int main_jesse_and_cookies() {
   uint64_t K, a1, a2;
   cin >> N >> K;
   auto v = nvector::Read<uint64_t>(N);
-  HeapMinOnTop<uint64_t> q(v);
+  MinHeap<uint64_t> q(v);
   for (; (q.Size() > 1) && (q.Top() < K);) {
     a1 = q.Extract();
     a2 = q.Extract();

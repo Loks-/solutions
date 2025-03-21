@@ -85,7 +85,7 @@ int main_2123a() {
 
   unordered_map<size_t, unsigned> min_cost;
   unordered_set<size_t> done;
-  HeapMinOnTop<pair<unsigned, Pos>> q;
+  MinHeap<pair<unsigned, Pos>> q;
   nvector::Write(vpos);
 
   for (unsigned itry = 0; itry < 16; ++itry) {

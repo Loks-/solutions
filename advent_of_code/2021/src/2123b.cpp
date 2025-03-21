@@ -83,7 +83,7 @@ int main_2123b() {
 
   unordered_map<size_t, unsigned> min_cost;
   unordered_set<size_t> done;
-  HeapMinOnTop<pair<unsigned, Pos>> q;
+  MinHeap<pair<unsigned, Pos>> q;
 
   for (unsigned id = 0; id < vpos.size(); ++id) {
     if (vpos[id].second == Target(id / 4, D - 1)) vpos[id].first = 2;

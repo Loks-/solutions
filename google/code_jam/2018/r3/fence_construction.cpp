@@ -57,7 +57,7 @@ int main_fence_construction() {
     vector<unsigned> order;
     vector<unsigned> visited_edges(F + 2, 0), visited_faces(gd.Size(), 0);
     visited_edges[K] = 1;
-    HeapMaxOnTop<unsigned> h;
+    MaxHeap<unsigned> h;
     for (h.Add(K); !h.Empty();) {
       unsigned eid = h.Extract();
       if ((eid < K) && !visited_edges[eid + 1]) break;

@@ -63,7 +63,7 @@ int main_2219() {
     s0.t = t;
     s0.v1(0) = 1;
     s0.Eval(vcost);
-    HeapMaxOnTop<State> h;
+    MaxHeap<State> h;
     unordered_set<size_t> sh;
     int best = 0;
     for (h.Add(s0); !h.Empty();) {

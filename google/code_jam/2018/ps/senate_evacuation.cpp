@@ -7,7 +7,7 @@ int main_senate_evacuation() {
   for (unsigned it = 1; it <= T; ++it) {
     unsigned N, t, s = 0;
     cin >> N;
-    HeapMaxOnTop<pair<unsigned, char>> pq;
+    MaxHeap<pair<unsigned, char>> pq;
     for (unsigned i = 0; i < N; ++i) {
       cin >> t;
       s += t;
