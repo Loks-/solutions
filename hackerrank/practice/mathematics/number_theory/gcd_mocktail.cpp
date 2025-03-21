@@ -10,7 +10,7 @@ using TModular = TModular_P32<30000001>;
 int main_gcd_mocktail() {
   // Precalc sums
   // O(maxl * precalc_n) ~ 10^6
-  unsigned maxl = local_run ? 10 : 100, precalc_n = local_run ? 100 : 10000;
+  unsigned maxl = kIsLocalRun ? 10 : 100, precalc_n = kIsLocalRun ? 100 : 10000;
   vector<vector<TModular>> vcache(maxl + 1, vector<TModular>(precalc_n + 1, 1));
   vcache[0][0] = 0;
   for (unsigned l = 1; l <= maxl; ++l) {

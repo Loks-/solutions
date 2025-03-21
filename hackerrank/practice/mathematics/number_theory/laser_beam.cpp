@@ -7,8 +7,8 @@
 #include "common/stl/base.h"
 
 int main_laser_beam() {
-  factorization::Mertens mertens(local_run ? 3000 : 3000000);
-  uint64_t N0 = local_run ? 1000 : 1000000;
+  factorization::Mertens mertens(kIsLocalRun ? 3000 : 3000000);
+  uint64_t N0 = kIsLocalRun ? 1000 : 1000000;
   vector<TModularD> vf(N0), vfs(N0);
   for (uint64_t i = 1; i < N0; ++i) vf[i] = 24 * i * i + 2;
   for (uint64_t i = 1; i < N0; ++i) {

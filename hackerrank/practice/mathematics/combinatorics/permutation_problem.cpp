@@ -9,7 +9,7 @@ using TFactorial = modular::mstatic::Factorial<TModularD>;
 
 int main_permutation_problem() {
   TFactorial f;
-  unsigned maxd = 11, maxn = local_run ? 10 : 1001;
+  unsigned maxd = 11, maxn = kIsLocalRun ? 10 : 1001;
   vector<vector<vector<TModularD>>> v(
       maxd, vector<vector<TModularD>>(maxn, vector<TModularD>(maxn)));
   v[0][0][0] = f.Get(9) * 9;  // 9/10 * 10!

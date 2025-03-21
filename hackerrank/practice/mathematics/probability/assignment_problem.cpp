@@ -12,7 +12,7 @@
 
 int main_assignment_problem() {
   numeric::LogDoubleFactorial f;
-  unsigned maxm = local_run ? 65 : 251, maxm2 = maxm * maxm;
+  unsigned maxm = kIsLocalRun ? 65 : 251, maxm2 = maxm * maxm;
   vector<double> v(maxm * maxm * maxm);  // layers max_length m
   for (unsigned l = 1; l < maxm; ++l) v[1 * maxm2 + l * maxm + l] = 1.0;
   for (unsigned m = 1; m < maxm; ++m) {
@@ -40,7 +40,7 @@ int main_assignment_problem() {
     for (unsigned l = 1; l <= min(M, N); ++l) {
       b *= double(N - l + 1) / double(l);
       for (unsigned ml = 1; ml + l - 1 <= M; ++ml)
-        s.AddSample(double(ml), b* v[l * maxm2 + ml * maxm + M]);
+        s.AddSample(double(ml), b * v[l * maxm2 + ml * maxm + M]);
     }
     cout << s.Mean() << endl;
   }

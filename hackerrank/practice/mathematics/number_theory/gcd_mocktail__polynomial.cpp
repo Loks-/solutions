@@ -12,14 +12,14 @@ using TPolynom = polynomial::BaseNewton<TModular>;
 int main_gcd_mocktail__polynomial() {
   // Precalc polynoms.
   // O(maxl^3) ~ 10^6
-  unsigned maxl = local_run ? 10 : 100;
+  unsigned maxl = kIsLocalRun ? 10 : 100;
   vector<TPolynom> vpoly(maxl + 1);
   for (unsigned l = 0; l < vpoly.size(); ++l)
     vpoly[l] = polynomial::GetSumOfPowers<TModular>(l);
 
   // Precalc sums
   // O(maxl * precalc_n) ~ 10^6
-  unsigned precalc_n = local_run ? 100 : 10000;
+  unsigned precalc_n = kIsLocalRun ? 100 : 10000;
   vector<vector<TModular>> vcache(maxl + 1, vector<TModular>(precalc_n + 1, 1));
   vcache[0][0] = 0;
   for (unsigned l = 1; l <= maxl; ++l) {

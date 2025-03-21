@@ -5,9 +5,9 @@
 #include "common/stl/base.h"
 
 int main_a_weird_function() {
-  const uint64_t maxi = local_run ? 1000000ull : 1000000000000ull;
-  factorization::table::EulersTotient eulers_totient(local_run ? 1500
-                                                               : 1500000);
+  const uint64_t maxi = kIsLocalRun ? 1000000ull : 1000000000000ull;
+  factorization::table::EulersTotient eulers_totient(kIsLocalRun ? 1500
+                                                                 : 1500000);
   vector<uint64_t> vi, vs(1, 0);
   uint64_t phi1 = 1, phi2 = 1;
   for (uint64_t j = 2;; ++j) {
