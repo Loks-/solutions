@@ -8,7 +8,7 @@
 
 #include <numeric>
 
-using TMatrix = SquareMatrixStaticSize<TModularD, 2>;
+using TMatrix = SquareMatrixStaticSize<ModularDefault, 2>;
 
 int main_number_of_m_coprime_arrays() {
   PrimesTable primes_table(1000000);
@@ -20,7 +20,7 @@ int main_number_of_m_coprime_arrays() {
     uint64_t N, M;
     cin >> N >> M;
     vector<unsigned> fp = PrimesPowers(primes_table, M);
-    TModularD r = 1;
+    ModularDefault r = 1;
     for (unsigned q : fp) {
       m(1, 0) = q;
       r *= m.PowU(N + 1)(0, 0);

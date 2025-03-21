@@ -6,8 +6,8 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TFibonacci = modular::mstatic::FibonacciMatrix<TModularD>;
-using THLD = graph::HLDSDP<TModularD, 2>;
+using TFibonacci = modular::mstatic::FibonacciMatrix<ModularDefault>;
+using THLD = graph::HLDSDP<ModularDefault, 2>;
 using TVector = THLD::TVector;
 
 int main_fibonacci_numbers_tree__hldsdp() {

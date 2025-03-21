@@ -4,7 +4,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TFactorial = modular::mstatic::Factorial<TModularD>;
+using TFactorial = modular::mstatic::Factorial<ModularDefault>;
 
 int main_div_and_span() {
   TFactorial f;

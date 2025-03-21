@@ -9,7 +9,7 @@ int main_binary_search_game() {
   cin >> T;
   for (unsigned it = 1; it <= T; ++it) {
     cin >> N >> M >> L;
-    TModularD m(M);
+    ModularDefault m(M);
     unsigned P2L = (1u << L), N0 = 0;
     auto va = nvector::Read<unsigned>(P2L);
     vector<unsigned> vac(N, 0), vam2(N, N), vc2;
@@ -23,9 +23,9 @@ int main_binary_search_game() {
       }
     }
     unsigned N2 = vc2.size(), P2N2 = (1u << N2);
-    vector<TModularD> vr(1, 0), vc0(P2L), vc1(P2L);
+    vector<ModularDefault> vr(1, 0), vc0(P2L), vc1(P2L);
     for (unsigned k = 1; k < N + 2; ++k) {
-      TModularD r = 0, m0 = k - 1, m1 = m - m0;
+      ModularDefault r = 0, m0 = k - 1, m1 = m - m0;
       for (unsigned in = 0; in < P2N2; ++in) {
         for (unsigned i = 0; i < P2L; ++i) {
           auto c = va[i];
@@ -34,7 +34,7 @@ int main_binary_search_game() {
             vc1[i] = m1;
           } else {
             vc1[i] = ((1u << vam2[c]) & in) ? 1u : 0u;
-            vc0[i] = TModularD(1) - vc1[i];
+            vc0[i] = ModularDefault(1) - vc1[i];
           }
         }
         for (unsigned l = 0; l < L; ++l) {

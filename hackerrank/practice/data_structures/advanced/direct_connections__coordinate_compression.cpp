@@ -22,13 +22,13 @@ int main_direct_connections__coordinate_compression() {
     ds::CoordinateCompression<uint64_t> cc(vx);
     ds::BIT<TPair> bit(cc.Size());
     TPair sum;
-    TModularD total = 0;
+    ModularDefault total = 0;
     for (auto px : vpx) {
       unsigned ccx = cc.GetNew(px.second);
       TPair l = bit.Sum(ccx), r = sum - l;
-      TModularD s =
+      ModularDefault s =
           (l.first * px.second - l.second) + (r.second - r.first * px.second);
-      total += s * TModularD(px.first);
+      total += s * ModularDefault(px.first);
       sum += make_pair(1u, px.second);
       bit.Add(ccx, {1u, px.second});
     }

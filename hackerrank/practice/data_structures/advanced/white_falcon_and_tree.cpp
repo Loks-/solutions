@@ -11,7 +11,7 @@
 namespace {
 class FData {
  public:
-  TModularD a, b, br;
+  ModularDefault a, b, br;
 };
 
 class FInfo : public ds::st::info::None {
@@ -56,7 +56,7 @@ class FActionSet : public ds::st::action::None {
     assert(value.b == value.br);
     empty = false;
     f = value;
-    auto m = (SquareMatrixStaticSize<TModularD, 2>{f.a, f.b, 0, 1})
+    auto m = (SquareMatrixStaticSize<ModularDefault, 2>{f.a, f.b, 0, 1})
                  .PowU(node->sinfo.Size());
     node->info.f.a = m(0, 0);
     node->info.f.b = m(0, 1);

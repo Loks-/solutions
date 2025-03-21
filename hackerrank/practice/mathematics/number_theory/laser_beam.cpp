@@ -9,7 +9,7 @@
 int main_laser_beam() {
   factorization::Mertens mertens(kIsLocalRun ? 3000 : 3000000);
   uint64_t N0 = kIsLocalRun ? 1000 : 1000000;
-  vector<TModularD> vf(N0), vfs(N0);
+  vector<ModularDefault> vf(N0), vfs(N0);
   for (uint64_t i = 1; i < N0; ++i) vf[i] = 24 * i * i + 2;
   for (uint64_t i = 1; i < N0; ++i) {
     for (uint64_t j = 2 * i; j < N0; j += i) vf[j] -= vf[i];
@@ -17,25 +17,25 @@ int main_laser_beam() {
   }
 
   auto Mertens = [&](uint64_t n) {
-    TModularD x;
+    ModularDefault x;
     x.SetS(mertens.GetMertens(n));
     return x;
   };
 
   auto G = [](uint64_t n) {
-    TModularD x(n);
+    ModularDefault x(n);
     return x * x * 24 + 2;
   };
 
   auto GS = [](uint64_t n) {
-    TModularD x(2 * n + 1);
+    ModularDefault x(2 * n + 1);
     return x * x * x;
   };
 
   auto FS = [&](uint64_t n) {
     if (n < N0) return vfs[n];
     uint64_t v = USqrt(n), ml = n / (v + 1);
-    TModularD r = 0;
+    ModularDefault r = 0;
     for (uint64_t l = 1; l <= ml; ++l) r += G(l) * Mertens(n / l);
     for (uint64_t k = 1; k <= v; ++k)
       r += (GS(n / k) - GS(n / (k + 1))) * Mertens(k);
@@ -53,7 +53,7 @@ int main_laser_beam() {
     if (D == 1) {
       cout << FS(NM) << endl;
     } else {
-      TModularD r = 0;
+      ModularDefault r = 0;
       uint64_t l = min(USqrt(N), NM);
       for (uint64_t k = 1;; ++k) {
         uint64_t kd = k * D, i1 = N / kd, i0 = N / (kd + 1);

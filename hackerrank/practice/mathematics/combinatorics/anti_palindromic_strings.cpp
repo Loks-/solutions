@@ -13,7 +13,7 @@ int main_anti_palindromic_strings() {
     else if (M == 1)
       cout << 0 << endl;
     else
-      cout << TModularD(M - 2).PowU(N - 2) * (M - 1) * M << endl;
+      cout << ModularDefault(M - 2).PowU(N - 2) * (M - 1) * M << endl;
   }
   return 0;
 }

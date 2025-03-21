@@ -15,7 +15,7 @@ class SolutionKittysCalculationOnATree
  protected:
   TreeGraph tree;
   graph::LCA lca;
-  vector<TModularD> results;
+  vector<ModularDefault> results;
   vector<unordered_map<unsigned, vector<unsigned>>> sets;
 
  public:
@@ -36,7 +36,7 @@ class SolutionKittysCalculationOnATree
     results.clear();
     results.resize(q);
     CentroidDecomposition::Run(tree, *this);
-    for (TModularD r : results) cout << r << endl;
+    for (ModularDefault r : results) cout << r << endl;
   }
 
   void PostDecompose(unsigned vertex, const CentroidDecomposition& cd) {
@@ -46,11 +46,11 @@ class SolutionKittysCalculationOnATree
       const auto& v = it.second;
       if (v.size() <= 1) continue;
       unsigned q = it.first;
-      TModularD s, sd;
-      unordered_map<unsigned, pair<TModularD, TModularD>> m;
+      ModularDefault s, sd;
+      unordered_map<unsigned, pair<ModularDefault, ModularDefault>> m;
       for (unsigned u : v) {
-        TModularD d(lca.GetDistance(u, vertex));
-        TModularD w(u + 1), wd = w * d;
+        ModularDefault d(lca.GetDistance(u, vertex));
+        ModularDefault w(u + 1), wd = w * d;
         s += w;
         sd += wd;
         unsigned g = group_map[u];
@@ -58,7 +58,7 @@ class SolutionKittysCalculationOnATree
         m[g].second += wd;
         if (u != vertex) sets[g][q].push_back(u);
       }
-      TModularD t = s * sd;
+      ModularDefault t = s * sd;
       for (auto& p : m) t -= p.second.first * p.second.second;
       results[q] += t;
     }

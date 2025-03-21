@@ -4,7 +4,7 @@
 #include "common/stl/base.h"
 
 int main_extremely_dangerous_virus() {
-  TModularD a, b;
+  ModularDefault a, b;
   uint64_t t;
   cin >> a >> b >> t;
   cout << ((a + b) / 2).PowU(t) << endl;

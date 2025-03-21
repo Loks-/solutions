@@ -5,7 +5,7 @@
 #include "common/numeric/utils/gcd.h"
 #include "common/stl/base.h"
 
-using TFactorial = modular::mstatic::Factorial<TModularD>;
+using TFactorial = modular::mstatic::Factorial<ModularDefault>;
 
 int main_grid_lines() {
   TFactorial f;
@@ -20,7 +20,7 @@ int main_grid_lines() {
   };
 
   auto F = [&](uint64_t n, uint64_t m, uint64_t k) {
-    TModularD s =
+    ModularDefault s =
         f.BinomialCoefficient(m, k) * n + f.BinomialCoefficient(n, k) * m;
     for (uint64_t dx = 1; dx * (k - 1) < n; ++dx) {
       for (uint64_t dy = 1; dy * (k - 1) < m; ++dy) {

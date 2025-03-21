@@ -13,7 +13,7 @@ class PInfo : public bst::info::Size {
   static const bool support_insert = false;
   static const bool support_remove = false;
 
-  TModularD s, sp, sl, sr;
+  ModularDefault s, sp, sl, sr;
 
   template <class TNode>
   void Update(TNode* node) {
@@ -28,7 +28,8 @@ class PInfo : public bst::info::Size {
       sp += node->l->info.sp;
       sl += node->l->info.sl;
       sr += node->l->info.sr;
-      sr += (TModularD(node->info.treap_height * size_l) - node->l->info.sp) *
+      sr += (ModularDefault(node->info.treap_height * size_l) -
+             node->l->info.sp) *
             (size_r + 1);
     }
     if (node->r) {
@@ -37,7 +38,8 @@ class PInfo : public bst::info::Size {
       sp += node->r->info.sp;
       sl += node->r->info.sl;
       sr += node->r->info.sr;
-      sl += (TModularD(node->info.treap_height * size_r) - node->r->info.sp) *
+      sl += (ModularDefault(node->info.treap_height * size_r) -
+             node->r->info.sp) *
             (size_l + 1);
     }
   }

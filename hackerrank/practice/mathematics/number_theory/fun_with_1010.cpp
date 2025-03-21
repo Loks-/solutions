@@ -5,7 +5,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TModular = TModular_P32<2000003>;
+using TModular = ModularPrime32<2000003>;
 
 int main_fun_with_1010() {
   TModular h = TModular(2).Inverse();

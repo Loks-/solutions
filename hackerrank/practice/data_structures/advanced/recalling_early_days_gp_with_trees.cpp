@@ -5,7 +5,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TModular = TModular_P32<100711433>;
+using TModular = ModularPrime32<100711433>;
 using THLD = graph::HLDSDP<TModular, 2>;
 using TVector = THLD::TVector;
 

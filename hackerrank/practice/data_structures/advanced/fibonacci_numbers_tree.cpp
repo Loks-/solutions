@@ -8,8 +8,8 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TBIT = ds::BIT<TModularD>;
-using TFibonacci = modular::mstatic::FibonacciMatrix<TModularD>;
+using TBIT = ds::BIT<ModularDefault>;
+using TFibonacci = modular::mstatic::FibonacciMatrix<ModularDefault>;
 
 int main_fibonacci_numbers_tree() {
   unsigned N, Q;
@@ -22,9 +22,9 @@ int main_fibonacci_numbers_tree() {
 
   auto Calc = [&](unsigned from) {
     unsigned index = nodes_info.preorder[from];
-    TModularD x0 = bit_f0.Sum(index + 1);
-    TModularD x1 = bit_f1.Sum(index + 1);
-    TModularD c = bit_c.Sum(index + 1);
+    ModularDefault x0 = bit_f0.Sum(index + 1);
+    ModularDefault x1 = bit_f1.Sum(index + 1);
+    ModularDefault c = bit_c.Sum(index + 1);
     return TFibonacci::GetU(nodes_info.deep[from] + 2, x0, x1) - x1 + c;
   };
 
@@ -38,7 +38,7 @@ int main_fibonacci_numbers_tree() {
       y -= 1;
       z = lca.GetLCA(x, y);
       cout << (Calc(x) + Calc(y) - Calc(z) -
-               ((z > 0) ? Calc(nodes_info.parent[z]) : TModularD(0)))
+               ((z > 0) ? Calc(nodes_info.parent[z]) : ModularDefault(0)))
            << endl;
     } else if (c == 'U') {
       unsigned x;

@@ -7,7 +7,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TModular = TModular_P32<1000000009>;
+using TModular = ModularPrime32<1000000009>;
 using TFactorial = modular::mstatic::Factorial<TModular>;
 using TTree = TreeGraphEI<TModular>;
 

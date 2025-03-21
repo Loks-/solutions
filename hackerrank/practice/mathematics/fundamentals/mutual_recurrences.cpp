@@ -4,7 +4,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TModular = TModular_C32<1000000000>;
+using TModular = ModularComposite32<1000000000>;
 using TMatrix = SquareMatrixStaticSize<TModular, 22>;
 
 int main_mutual_recurrences() {

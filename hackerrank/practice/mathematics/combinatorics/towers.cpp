@@ -4,7 +4,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TMatrix = SquareMatrixStaticSize<TModularD, 15>;
+using TMatrix = SquareMatrixStaticSize<ModularDefault, 15>;
 
 int main_towers() {
   uint64_t n;

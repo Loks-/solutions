@@ -9,11 +9,11 @@ int main_tile_painting_revisited() {
   for (unsigned iT = 0; iT < T; ++iT) {
     uint64_t N;
     cin >> N;
-    TModularD s = N;
+    ModularDefault s = N;
     for (uint64_t l = 1; l * l < N; ++l) {
       s += (N - l * l);
       uint64_t k = (N - 1) / l;
-      s += TModularD(k - l) * (2 * N - l * (k + l + 1));
+      s += ModularDefault(k - l) * (2 * N - l * (k + l + 1));
     }
     cout << s << endl;
   }

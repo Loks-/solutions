@@ -4,7 +4,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TFactorial = modular::mstatic::Factorial<TModularD>;
+using TFactorial = modular::mstatic::Factorial<ModularDefault>;
 
 int main_beautiful_sets() {
   TFactorial f;
@@ -12,7 +12,7 @@ int main_beautiful_sets() {
   cin >> T;
   for (unsigned iT = 0; iT < T; ++iT) {
     cin >> n >> k;
-    TModularD s = 0;
+    ModularDefault s = 0;
     for (unsigned l = 1; l <= k / 2; ++l)
       s += f.BinomialCoefficient(n - k + 1, l) *
            f.BinomialCoefficient(k - l - 1, l - 1);

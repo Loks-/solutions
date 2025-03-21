@@ -10,6 +10,6 @@ int main_a_chocolate_fiesta() {
     cin >> x;
     s += (x & 1);
   }
-  cout << TModularD(2).PowU(s ? n - 1 : n) - 1 << endl;
+  cout << ModularDefault(2).PowU(s ? n - 1 : n) - 1 << endl;
   return 0;
 }

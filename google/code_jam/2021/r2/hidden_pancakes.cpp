@@ -13,14 +13,14 @@ int main_hidden_pancakes() {
   };
 
   unsigned T, N;
-  modular::mstatic::Factorial<TModularD> f;
+  modular::mstatic::Factorial<ModularDefault> f;
   cin >> T;
   for (unsigned it = 1; it <= T; ++it) {
     cin >> N;
     std::vector<uint64_t> v = nvector::Read<uint64_t>(N), va(N);
     for (unsigned i = 0; i < N; ++i) va[i] = (v[i] + 1) * N - (i + 1);
     nvector::RMQ<uint64_t> rmq(va);
-    TModularD r = 1;
+    ModularDefault r = 1;
     stack<Task> tasks;
     for (tasks.push({0, N, 1}); !tasks.empty();) {
       auto t = tasks.top();

@@ -5,7 +5,7 @@
 #include "common/vector/read.h"
 
 int main_colorful_polygon() {
-  TModularD two = 2;
+  ModularDefault two = 2;
   unsigned n, u = -1u;
   cin >> n;
   vector<unsigned> v = nvector::Read<unsigned>(n);
@@ -30,9 +30,9 @@ int main_colorful_polygon() {
     cout << two.PowU(n) - two.PowU(best_d - 1) - two.PowU(n - best_d - 1) - 1
          << endl;
   } else {
-    TModularD s = 0;
+    ModularDefault s = 0;
     unsigned bis = best_i + n - vlast[best_i];
-    vector<TModularD> vc(n), vcs(n);
+    vector<ModularDefault> vc(n), vcs(n);
     for (unsigned is = bis; is <= best_i + n; ++is) {
       unsigned l = is;
       fill(vc.begin(), vc.end(), 0);

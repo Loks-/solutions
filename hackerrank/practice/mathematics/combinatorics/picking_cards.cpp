@@ -12,7 +12,7 @@ int main_picking_cards() {
     vector<unsigned> v = nvector::Read<unsigned>(n);
     sort(v.begin(), v.end());
     v.push_back(n);
-    TModularD r = 1;
+    ModularDefault r = 1;
     for (unsigned i = 0, j = 0; i < n; ++i) {
       for (; v[j] <= i;) ++j;
       r *= max(i, j) - i;

@@ -7,7 +7,7 @@
 
 #include <numeric>
 
-using TMatrix = SquareMatrixStaticSize<TModularD, 2>;
+using TMatrix = SquareMatrixStaticSize<ModularDefault, 2>;
 
 int main_number_of_m_coprime_arrays__factorization() {
   TMatrix m{1, 1};
@@ -18,7 +18,7 @@ int main_number_of_m_coprime_arrays__factorization() {
     uint64_t N, M;
     cin >> N >> M;
     TFactorization fp = Factorize(M);
-    TModularD r = 1;
+    ModularDefault r = 1;
     for (auto q : fp) {
       m(1, 0) = q.power;
       r *= m.PowU(N + 1)(0, 0);

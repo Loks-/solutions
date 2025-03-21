@@ -5,16 +5,16 @@
 #include "common/stl/base.h"
 
 int main_computer_virus() {
-  modular::mstatic::Factorial<TModularD> f;
+  modular::mstatic::Factorial<ModularDefault> f;
   unsigned T, K;
   cin >> T;
   for (unsigned it = 0; it < T; ++it) {
     uint64_t N;
     cin >> K >> N;
-    TModularD s = 0, nf = 1, p2 = 1, two = 2;
+    ModularDefault s = 0, nf = 1, p2 = 1, two = 2;
     for (unsigned i = 0; i <= K; ++i) {
       s += p2 * f.BinomialCoefficient(K, i) * nf * f.GetI(i);
-      nf *= TModularD(N - i);
+      nf *= ModularDefault(N - i);
       p2 *= two;
     }
     cout << s << endl;

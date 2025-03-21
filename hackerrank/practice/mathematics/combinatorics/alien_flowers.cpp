@@ -4,13 +4,13 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TFactorial = modular::mstatic::Factorial<TModularD>;
+using TFactorial = modular::mstatic::Factorial<ModularDefault>;
 
 int main_alien_flowers() {
   TFactorial f;
   unsigned A, B, C, D;
   cin >> A >> B >> C >> D;
-  TModularD res = 0;
+  ModularDefault res = 0;
   if (B == D + 1) {
     res = f.BinomialCoefficient(D + A, D) * f.BinomialCoefficient(D + C, D);
   } else if (D == B + 1) {

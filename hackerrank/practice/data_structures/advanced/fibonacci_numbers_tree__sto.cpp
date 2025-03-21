@@ -8,12 +8,12 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TFibonacci = modular::mstatic::FibonacciMatrix<TModularD>;
+using TFibonacci = modular::mstatic::FibonacciMatrix<ModularDefault>;
 
 namespace {
 class FData {
  public:
-  TModularD c, f0, f1;
+  ModularDefault c, f0, f1;
 
   FData& operator+=(const FData& r) {
     c += r.c;
@@ -26,7 +26,7 @@ class FData {
     return (c == r.c) && (f0 == r.f0) && (f1 == r.f1);
   }
 
-  TModularD Get(unsigned deep) const {
+  ModularDefault Get(unsigned deep) const {
     return TFibonacci::GetU(deep + 2, f0, f1) - f1 + c;
   }
 };
@@ -55,7 +55,7 @@ int main_fibonacci_numbers_tree__sto() {
       y -= 1;
       z = lca.GetLCA(x, y);
       cout << (Calc(x) + Calc(y) - Calc(z) -
-               ((z > 0) ? Calc(sto.Parent(z)) : TModularD(0)))
+               ((z > 0) ? Calc(sto.Parent(z)) : ModularDefault(0)))
            << endl;
     } else if (c == 'U') {
       unsigned x;

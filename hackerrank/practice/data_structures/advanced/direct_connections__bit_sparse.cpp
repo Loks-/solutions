@@ -20,12 +20,12 @@ int main_direct_connections__bit_sparse() {
     for (unsigned i = 0; i < N; ++i) vpx.push_back({vp[i], vx[i]});
     sort(vpx.begin(), vpx.end());
     TPair sum;
-    TModularD total = 0;
+    ModularDefault total = 0;
     for (auto px : vpx) {
       TPair l = bit.Sum(px.second), r = sum - l;
-      TModularD s =
+      ModularDefault s =
           (l.first * px.second - l.second) + (r.second - r.first * px.second);
-      total += s * TModularD(px.first);
+      total += s * ModularDefault(px.first);
       sum += make_pair(1u, px.second);
       bit.Add(px.second, {1u, px.second});
     }

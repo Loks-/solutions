@@ -4,7 +4,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TModular = TModular_P32<1000000009>;
+using TModular = ModularPrime32<1000000009>;
 
 int main_lucy_and_flowers() {
   modular::mstatic::Factorial<TModular, true> f;

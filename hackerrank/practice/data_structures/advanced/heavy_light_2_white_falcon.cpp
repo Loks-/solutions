@@ -5,7 +5,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using THLD = graph::HLDSDP<TModularD, 2>;
+using THLD = graph::HLDSDP<ModularDefault, 2>;
 using TVector = THLD::TVector;
 
 int main_heavy_light_2_white_falcon() {
@@ -20,7 +20,7 @@ int main_heavy_light_2_white_falcon() {
     unsigned t, u, v;
     cin >> t >> u >> v;
     if (t == 1) {
-      TModularD x;
+      ModularDefault x;
       cin >> x;
       unsigned a = hld.LCA(u, v), d = hld.Deep(a);
       auto y = x * (hld.DistanceFromAncestor(a, u) + 1);

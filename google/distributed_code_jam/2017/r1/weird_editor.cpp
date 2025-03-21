@@ -1,4 +1,5 @@
 #include "weird_editor.h"
+
 #include "message.h"
 
 #include "common/modular_io.h"
@@ -43,11 +44,11 @@ int main_weird_editor() {
   }
 
   if (node_id == 0) {
-    TModularD f, one(1), nine(9), ten(10);
+    ModularDefault f, one(1), nine(9), ten(10);
     for (int digit = 9; digit > 0; --digit) {
       length -= vc[digit];
       f += ten.PowU(length) * (ten.PowU(vc[digit]) - one) / nine *
-           TModularD(digit);
+           ModularDefault(digit);
     }
     cout << f << endl;
   }

@@ -6,7 +6,7 @@
 #include "common/vector/read.h"
 
 int main_hyperrectangle_gcd() {
-  vector<TModularD> v(100001);
+  vector<ModularDefault> v(100001);
   unsigned T, K;
   cin >> T;
   for (unsigned iT = 0; iT < T; ++iT) {
@@ -15,12 +15,12 @@ int main_hyperrectangle_gcd() {
     unsigned n0 = nvector::Min(vnk);
     for (unsigned i = 1; i <= n0; ++i) {
       v[i] = 1;
-      for (unsigned nk : vnk) v[i] *= TModularD(nk / i);
+      for (unsigned nk : vnk) v[i] *= ModularDefault(nk / i);
     }
-    TModularD s = 0;
+    ModularDefault s = 0;
     for (unsigned i = n0; i; --i) {
       for (unsigned j = 2 * i; j <= n0; j += i) v[i] -= v[j];
-      s += v[i] * TModularD(i);
+      s += v[i] * ModularDefault(i);
     }
     cout << s << endl;
   }

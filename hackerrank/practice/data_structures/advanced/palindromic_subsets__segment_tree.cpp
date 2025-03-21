@@ -42,8 +42,9 @@ int main_palindromic_subsets__segment_tree() {
           nnonzero += 1;
         }
       }
-      TModularD two = 2;
-      cout << (TModularD(nnonzero + 1) * two.PowU(nsum - nnonzero) - 1) << endl;
+      ModularDefault two = 2;
+      cout << (ModularDefault(nnonzero + 1) * two.PowU(nsum - nnonzero) - 1)
+           << endl;
     }
   }
   return 0;

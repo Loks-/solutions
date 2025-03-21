@@ -3,7 +3,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TModular = TModular_C32<100000>;
+using TModular = ModularComposite32<100000>;
 
 int main_diwali_lights() {
   unsigned T, N;

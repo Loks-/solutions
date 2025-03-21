@@ -8,17 +8,17 @@ int main_cyclic_quadruples() {
   vector<unsigned> v;
 
   auto R = [](unsigned l, unsigned r) {
-    return TModularD(max(l - 1, r) - (l - 1));
+    return ModularDefault(max(l - 1, r) - (l - 1));
   };
 
   auto ABCD = [&]() {
-    TModularD r = 1;
+    ModularDefault r = 1;
     for (unsigned i = 0; i < 8; i += 2) r *= R(v[i], v[i + 1]);
     return r;
   };
 
   auto AACD = [&]() {
-    TModularD s = 0;
+    ModularDefault s = 0;
     for (unsigned j = 0; j < 8; j += 2)
       s += R(max(v[j], v[j + 2]), min(v[j + 1], v[j + 3])) *
            R(v[j + 4], v[j + 5]) * R(v[j + 6], v[j + 7]);
@@ -26,7 +26,7 @@ int main_cyclic_quadruples() {
   };
 
   auto AACC = [&]() {
-    TModularD s = 0;
+    ModularDefault s = 0;
     for (unsigned j = 0; j < 4; j += 2)
       s += R(max(v[j], v[j + 2]), min(v[j + 1], v[j + 3])) *
            R(max(v[j + 4], v[j + 6]), min(v[j + 5], v[j + 7]));
@@ -34,7 +34,7 @@ int main_cyclic_quadruples() {
   };
 
   auto AAAD = [&]() {
-    TModularD s = 0;
+    ModularDefault s = 0;
     for (unsigned j = 0; j < 8; j += 2)
       s += R(max(max(v[j], v[j + 2]), v[j + 4]),
              min(min(v[j + 1], v[j + 3]), v[j + 5])) *

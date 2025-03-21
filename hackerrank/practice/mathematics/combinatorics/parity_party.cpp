@@ -4,7 +4,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TModular = TModular_P32<7340033>;
+using TModular = ModularPrime32<7340033>;
 using TFFT = modular::mstatic::FFTA<TModular>;
 
 int main_parity_party() {

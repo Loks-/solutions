@@ -8,7 +8,7 @@
 
 #include <unordered_map>
 
-using TFibonacci = modular::mstatic::FibonacciMatrix<TModularD>;
+using TFibonacci = modular::mstatic::FibonacciMatrix<ModularDefault>;
 
 int main_fibonacci_lcm() {
   unsigned N;
@@ -21,7 +21,7 @@ int main_fibonacci_lcm() {
     for (auto p : current) next[GCD(a, p.first)] -= p.second;
     current.swap(next);
   }
-  TModularD r(1);
+  ModularDefault r(1);
   for (auto p : current) r *= TFibonacci::GetU(p.first).PowS(p.second);
   cout << r << endl;
   return 0;

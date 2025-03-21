@@ -4,10 +4,11 @@
 #include "common/stl/base.h"
 
 int main_divisor_exploration() {
-  TModularD half = TModularD(2).Inverse();
-  vector<TModularD> v(1, 1);
+  ModularDefault half = ModularDefault(2).Inverse();
+  vector<ModularDefault> v(1, 1);
   for (unsigned i = 0; i < 200000; ++i)
-    v.push_back(v.back() * TModularD(i + 3) * TModularD(i + 2) * half);
+    v.push_back(v.back() * ModularDefault(i + 3) * ModularDefault(i + 2) *
+                half);
   unsigned T, m, a;
   cin >> T;
   for (unsigned it = 0; it < T; ++it) {

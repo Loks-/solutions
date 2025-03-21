@@ -5,7 +5,7 @@
 #include "common/numeric/utils/binomial_coefficient_prime_power.h"
 #include "common/stl/base.h"
 
-using TModular = TModular_P32<1000003>;
+using TModular = ModularPrime32<1000003>;
 
 // R = BC(n-3, k) * BC(n+k-1, k) / (k + 1)
 int main_polygons() {

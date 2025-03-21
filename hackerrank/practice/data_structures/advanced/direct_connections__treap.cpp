@@ -23,14 +23,14 @@ int main_direct_connections__treap() {
     vector<pair<uint64_t, uint64_t>> vpx;
     for (unsigned i = 0; i < N; ++i) vpx.push_back({vp[i], vx[i]});
     sort(vpx.begin(), vpx.end());
-    TModularD total = 0;
+    ModularDefault total = 0;
     TNode *root = 0, *l, *r;
     for (auto px : vpx) {
       tree.SplitByKey(root, px.second, l, r);
-      TModularD s = 0;
-      if (l) s += TModularD(l->info.size * px.second - l->info.sum_keys);
-      if (r) s += TModularD(r->info.sum_keys - r->info.size * px.second);
-      total += s * TModularD(px.first);
+      ModularDefault s = 0;
+      if (l) s += ModularDefault(l->info.size * px.second - l->info.sum_keys);
+      if (r) s += ModularDefault(r->info.sum_keys - r->info.size * px.second);
+      total += s * ModularDefault(px.first);
       TNode* m = tree.New(TEmpty(), px.second);
       root = tree.Join(tree.Join(l, m), r);
     }

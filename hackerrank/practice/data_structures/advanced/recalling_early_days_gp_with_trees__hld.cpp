@@ -8,7 +8,7 @@
 #include "common/stl/base.h"
 #include "common/stl/pair.h"
 
-using TModular = TModular_P32<100711433>;
+using TModular = ModularPrime32<100711433>;
 
 namespace {
 class FData {

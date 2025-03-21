@@ -5,15 +5,15 @@
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
-using TFactorial = modular::mstatic::Factorial<TModularD>;
+using TFactorial = modular::mstatic::Factorial<ModularDefault>;
 
 int main_choose_and_calculate() {
   TFactorial f;
   unsigned N, K;
   cin >> N >> K;
-  vector<TModularD> va = nvector::Read<TModularD>(N);
+  vector<ModularDefault> va = nvector::Read<ModularDefault>(N);
   sort(va.begin(), va.end());
-  TModularD s1 = 0, s2 = 0;
+  ModularDefault s1 = 0, s2 = 0;
   for (unsigned i = 0; i < N; ++i) {
     s1 += va[i] * f.BinomialCoefficient(N - i - 1, K - 1);
     s2 += va[i] * f.BinomialCoefficient(i, K - 1);

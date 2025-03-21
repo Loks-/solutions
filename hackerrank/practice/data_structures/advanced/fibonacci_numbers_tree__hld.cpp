@@ -9,12 +9,12 @@
 #include "common/stl/base.h"
 #include "common/stl/pair.h"
 
-using TFibonacci = modular::mstatic::FibonacciMatrix<TModularD>;
+using TFibonacci = modular::mstatic::FibonacciMatrix<ModularDefault>;
 
 namespace {
 class FData {
  public:
-  TModularD f0, f1, v;
+  ModularDefault f0, f1, v;
 
   FData operator+(const FData& r) const {
     return FData{f0 + r.f0, f1 + r.f1, v + r.v};
@@ -23,7 +23,7 @@ class FData {
 
 class ActionAdd : public ds::st::action::None {
  public:
-  using TData = std::pair<TModularD, TModularD>;
+  using TData = std::pair<ModularDefault, ModularDefault>;
   static const bool modify_data = true;
 
   TData x;

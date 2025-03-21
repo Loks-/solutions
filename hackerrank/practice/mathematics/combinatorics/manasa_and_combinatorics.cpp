@@ -4,7 +4,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TModular = TModular_P32<99991>;
+using TModular = ModularPrime32<99991>;
 
 int main_manasa_and_combinatorics() {
   unsigned T;

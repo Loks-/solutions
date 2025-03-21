@@ -6,7 +6,7 @@
 #include "common/polynomial/utils/sum_of_powers.h"
 #include "common/stl/base.h"
 
-using TModular = TModular_P32<30000001>;
+using TModular = ModularPrime32<30000001>;
 using TPolynom = polynomial::BaseNewton<TModular>;
 
 int main_gcd_mocktail__polynomial() {

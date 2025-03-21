@@ -14,10 +14,10 @@ int main_hyperrectangle_gcd__totient() {
     cin >> K;
     vector<unsigned> vnk = nvector::Read<unsigned>(K);
     unsigned n0 = nvector::Min(vnk);
-    TModularD s = 0;
+    ModularDefault s = 0;
     for (unsigned i = 1; i <= n0; ++i) {
-      TModularD t = eulers_totient(i);
-      for (unsigned nk : vnk) t *= TModularD(nk / i);
+      ModularDefault t = eulers_totient(i);
+      for (unsigned nk : vnk) t *= ModularDefault(nk / i);
       s += t;
     }
     cout << s << endl;

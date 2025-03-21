@@ -5,7 +5,7 @@
 #include "common/numeric/utils/gcd.h"
 #include "common/stl/base.h"
 
-using TFibonacci = modular::mstatic::FibonacciMatrix<TModularD>;
+using TFibonacci = modular::mstatic::FibonacciMatrix<ModularDefault>;
 
 int main_fibonacci_gcd() {
   unsigned N;

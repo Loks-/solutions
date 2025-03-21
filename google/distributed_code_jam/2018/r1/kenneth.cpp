@@ -21,15 +21,15 @@ int main_kenneth() {
   for (int64_t i = first; i < last; ++i)
     vstr[i - first] = GetSignalCharacter(i);
 
-  vector<TModularD> vh(ln + 1);
-  TModularD one(1), mm = TModularD(0x0e3779b9);
-  TModularD mb = mm.PowU(first), mc = mb;
+  vector<ModularDefault> vh(ln + 1);
+  ModularDefault one(1), mm = ModularDefault(0x0e3779b9);
+  ModularDefault mb = mm.PowU(first), mc = mb;
   vh[0] = 0;
   for (int64_t i = 0; i < ln; ++i) {
-    vh[i + 1] = vh[i] + mc * TModularD(vstr[i]);
+    vh[i + 1] = vh[i] + mc * ModularDefault(vstr[i]);
     mc *= mm;
   }
-  TModularD mmsum = mm.PowU(l) - one;
+  ModularDefault mmsum = mm.PowU(l) - one;
   assert(mmsum);
 
   if (node_id != 0) {
@@ -40,7 +40,7 @@ int main_kenneth() {
   Send((node_id + 1) % nodes);
   for (int64_t i = 1; i <= ln; ++i) vh[i] += vh[0];
 
-  TModularD sum;
+  ModularDefault sum;
   if (node_id == 0) {
     Receive(nodes - 1);
     sum.SetS(GetInt(nodes - 1));
@@ -60,11 +60,11 @@ int main_kenneth() {
   vector<char> vok(vd.size(), 1);
   for (unsigned k = 0; k < vd.size(); ++k) {
     int64_t d = vd[k];
-    TModularD mmpowd = mm.PowU(d);
-    TModularD mmsumd = (mmpowd - one);
-    TModularD target = sum * mmsumd / mmsum;
+    ModularDefault mmpowd = mm.PowU(d);
+    ModularDefault mmsumd = (mmpowd - one);
+    ModularDefault target = sum * mmsumd / mmsum;
     int64_t j = (first / d) + 1;
-    TModularD mmsumjd = (mm.PowU(j * d) - one);
+    ModularDefault mmsumjd = (mm.PowU(j * d) - one);
     for (; j * d <= last; ++j) {
       if (vh[j * d - first] * mmsumd != target * mmsumjd) {
         vok[k] = 0;

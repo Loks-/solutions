@@ -17,12 +17,12 @@ int main_broken_memory() {
     values[i] = uint64_t(GetValue(i));
   }
 
-  const TModularD c = 195731;
+  const ModularDefault c = 195731;
   auto h = [&](int f, int l) {
-    TModularD v = 0;
+    ModularDefault v = 0;
     for (int i = f; i < l; ++i) {
       v *= c;
-      v += TModularD(values[i]);
+      v += ModularDefault(values[i]);
     }
     return int(v.Get());
   };

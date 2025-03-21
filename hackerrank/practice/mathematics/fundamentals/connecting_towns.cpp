@@ -3,7 +3,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TModular = TModular_C32<1234567>;
+using TModular = ModularComposite32<1234567>;
 
 int main_connecting_towns() {
   unsigned T, n;

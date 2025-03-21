@@ -10,13 +10,13 @@
 int main_matrix_tree() {
   unsigned N;
   cin >> N;
-  vector<TModularD> vw = nvector::Read<TModularD>(N);
+  vector<ModularDefault> vw = nvector::Read<ModularDefault>(N);
   TreeGraph tree(N);
   tree.ReadEdges();
 
-  std::function<TModularD(unsigned, unsigned, TModularD)> SolveR = [&](
-      unsigned node, unsigned p, TModularD pw) -> TModularD {
-    TModularD r = vw[node] - pw;
+  std::function<ModularDefault(unsigned, unsigned, ModularDefault)> SolveR =
+      [&](unsigned node, unsigned p, ModularDefault pw) -> ModularDefault {
+    ModularDefault r = vw[node] - pw;
     for (unsigned c : tree.Edges(node)) {
       if (c == p) continue;
       r *= SolveR(c, node, vw[node]);

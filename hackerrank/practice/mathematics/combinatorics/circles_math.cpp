@@ -4,17 +4,17 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TFactorial = modular::mstatic::Factorial<TModularD>;
+using TFactorial = modular::mstatic::Factorial<ModularDefault>;
 
 int main_circles_math() {
   TFactorial f;
   unsigned maxn = 1000001;
-  vector<TModularD> ve(maxn);
-  TModularD sone = 1;
+  vector<ModularDefault> ve(maxn);
+  ModularDefault sone = 1;
   ve[0] = 1;
   for (unsigned i = 1; i < maxn; ++i) {
     sone = -sone;
-    ve[i] = TModularD(i) * ve[i - 1] + sone;
+    ve[i] = ModularDefault(i) * ve[i - 1] + sone;
   }
 
   unsigned T, N, K;
@@ -25,7 +25,7 @@ int main_circles_math() {
       cout << 0 << endl;
     } else {
       sone = 1;
-      TModularD s = 0, r = 1, ki = TModularD(K).Inverse();
+      ModularDefault s = 0, r = 1, ki = ModularDefault(K).Inverse();
       for (unsigned l = 1; l * K <= N; ++l) {
         r *= ki;
         s +=

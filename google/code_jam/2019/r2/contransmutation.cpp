@@ -20,7 +20,7 @@ int main_contransmutation() {
       g.AddEdge(i, r1 - 1);
       g.AddEdge(i, r2 - 1);
     }
-    vector<TModularD> vc = nvector::Read<TModularD>(n);
+    vector<ModularDefault> vc = nvector::Read<ModularDefault>(n);
     for (unsigned i = 0; i < n; ++i) {
       if (vc[i].Get()) g.AddEdge(n, i);
     }
@@ -49,7 +49,7 @@ int main_contransmutation() {
       }
     }
     bool unbounded = false;
-    TModularD s = 0;
+    ModularDefault s = 0;
     for (unsigned i = 0; i < n; ++i) {
       if (i && !valid[i]) continue;
       s += vc[i];

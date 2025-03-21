@@ -5,14 +5,14 @@
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
-using TBIT = ds::BIT<TModularD>;
+using TBIT = ds::BIT<ModularDefault>;
 
 int main_polynomial_division() {
   unsigned n, a, b, q, c;
   cin >> n >> a >> b >> q;
-  TModularD x = -TModularD(b) / TModularD(a);
+  ModularDefault x = -ModularDefault(b) / ModularDefault(a);
   if (x.Get()) {
-    vector<TModularD> vx(n);
+    vector<ModularDefault> vx(n);
     vx[0] = 1;
     for (unsigned i = 1; i < n; ++i) vx[i] = vx[i - 1] * x;
     TBIT bit(n);
@@ -24,7 +24,7 @@ int main_polynomial_division() {
       unsigned t, l, r;
       cin >> t >> l >> r;
       if (t == 1)
-        bit.Add(l, vx[l] * TModularD(r) - bit.Get(l));
+        bit.Add(l, vx[l] * ModularDefault(r) - bit.Get(l));
       else if (t == 2)
         cout << ((bit.Sum(l, r + 1) == 0) ? "Yes" : "No") << endl;
     }

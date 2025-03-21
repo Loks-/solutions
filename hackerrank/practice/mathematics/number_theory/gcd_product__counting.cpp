@@ -18,8 +18,8 @@ int main_gcd_product__counting() {
     else
       for (uint64_t j = 2 * i; j <= m; j += i) vc[i] -= vc[j];
   }
-  TModularD r = 1;
-  for (uint64_t i = 2; i <= m; ++i) r *= TModularD(i).PowU(vc[i]);
+  ModularDefault r = 1;
+  for (uint64_t i = 2; i <= m; ++i) r *= ModularDefault(i).PowU(vc[i]);
   cout << r << endl;
   return 0;
 }

@@ -5,7 +5,7 @@
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 
-using TModular = TModular_P32<30000001>;
+using TModular = ModularPrime32<30000001>;
 
 int main_gcd_mocktail() {
   // Precalc sums

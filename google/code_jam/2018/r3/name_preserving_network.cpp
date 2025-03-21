@@ -5,7 +5,7 @@
 
 #include <unordered_map>
 
-using TMatrix = la::Matrix<TModularD>;
+using TMatrix = la::Matrix<ModularDefault>;
 
 int main_name_preserving_network() {
   auto generate_random_graph = [](unsigned n) {

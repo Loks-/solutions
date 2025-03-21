@@ -13,7 +13,7 @@ class ActionAddArithmeticSequence : public bst::action::Reverse {
  public:
   using TBase = bst::action::Reverse;
   using TSelf = ActionAddArithmeticSequence;
-  using TActionValue = std::pair<TModularD, TModularD>;
+  using TActionValue = std::pair<ModularDefault, ModularDefault>;
 
   TActionValue value;
 
@@ -43,7 +43,7 @@ class ActionAddArithmeticSequence : public bst::action::Reverse {
 
   template <class TNode>
   void Add(TNode* node, TActionValue add_value) {
-    TModularD s = node->info.size;
+    ModularDefault s = node->info.size;
     node->info.sum += add_value.first * s + add_value.second * s * (s - 1) / 2;
     value += add_value;
   }
@@ -52,7 +52,7 @@ class ActionAddArithmeticSequence : public bst::action::Reverse {
   void Apply(TNode* node) {
     TBase::Apply(node);
     if (!IsValueEmpty()) {
-      TModularD lsize = (node->l ? node->l->info.size : 0);
+      ModularDefault lsize = (node->l ? node->l->info.size : 0);
       node->data += value.first + value.second * lsize;
       if (node->l) node->l->AddAction(value);
       if (node->r)
@@ -69,7 +69,8 @@ int main_heavy_light_2_white_falcon__lct() {
   cin >> N >> Q;
   TreeGraph tree(N);
   tree.ReadEdges(true);
-  graph::LinkCutTree<TModularD, bst::info::Sum<TModularD, bst::info::Size>,
+  graph::LinkCutTree<ModularDefault,
+                     bst::info::Sum<ModularDefault, bst::info::Size>,
                      ActionAddArithmeticSequence>
       lct(tree);
 
@@ -78,7 +79,8 @@ int main_heavy_light_2_white_falcon__lct() {
     cin >> t >> u >> v;
     if (t == 1) {
       cin >> x;
-      lct.AddActionOnPath(u, v, make_pair<TModularD, TModularD>(x, x));
+      lct.AddActionOnPath(u, v,
+                          make_pair<ModularDefault, ModularDefault>(x, x));
     } else if (t == 2) {
       cout << lct.GetPathInfo(u, v).sum << endl;
     }

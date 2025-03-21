@@ -7,13 +7,13 @@
 
 int main_gcd_sequence() {
   factorization::table::Mobius mobius(100000);
-  modular::mstatic::Factorial<TModularD> f;
+  modular::mstatic::Factorial<ModularDefault> f;
 
   unsigned T, N, K;
   cin >> T;
   for (unsigned it = 0; it < T; ++it) {
     cin >> N >> K;
-    TModularD r = 0, one = 1;
+    ModularDefault r = 0, one = 1;
     for (unsigned i = 1; i <= N; ++i) {
       int m = mobius(i);
       if (m == 0) continue;
