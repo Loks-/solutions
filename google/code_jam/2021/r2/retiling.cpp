@@ -31,7 +31,7 @@ int main_retiling() {
         a(i, j) = std::min<int64_t>(2 * F, S * DistanceL1(vps[i], vpe[j]));
     }
     cout << "Case #" << it << ": "
-         << alg::Assignment(a, 2 * F + 1) + F * (m - n) << endl;
+         << alg::assignment_cost(a, 2 * F + 1) + F * (m - n) << endl;
   }
   return 0;
 }
