@@ -8,8 +8,8 @@
 int main_value_of_all_permutations() {
   unsigned p, n, q, l = 1, m;
   cin >> p >> n;
-  TModularProxy_P32U mp(p);
-  modular::proxy::Factorial<TModularProxy_P32U> f(p);
+  ModularProxyPrime32 mp(p);
+  modular::proxy::Factorial<ModularProxyPrime32> f(p);
   vector<unsigned> v = nvector::Read<unsigned>(n);
   sort(v.begin(), v.end());
   uint64_t total = f.Get(n);

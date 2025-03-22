@@ -5,7 +5,7 @@
 #include "common/numeric/utils/gcd.h"
 #include "common/stl/base.h"
 
-using TModularProxy = TModularProxy_C32U;
+using TModularProxy = ModularProxyComposite32;
 
 int main_period() {
   class AC {
