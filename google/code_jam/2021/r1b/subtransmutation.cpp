@@ -33,7 +33,7 @@ int main_subtransmutation() {
     };
 
     cout << "Case #" << it << ": "
-         << (ok ? to_string(FirstIfB(N, F)) : "IMPOSSIBLE") << endl;
+         << (ok ? to_string(find_first_if(N, F)) : "IMPOSSIBLE") << endl;
   }
   return 0;
 }
