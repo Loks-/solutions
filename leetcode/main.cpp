@@ -11,5 +11,5 @@ int main(int nargs, char **pargs) {
     std::cout << "Input leetcode solution to run:" << std::endl;
     std::cin >> solution_name;
   }
-  return ProxyRun(solution_name);
+  return run_solution(solution_name);
 }

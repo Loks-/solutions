@@ -22,7 +22,7 @@ file ( WRITE ${ADVENT_PROXY_CXX}
 	"#include \"common/proxy_run_base.h\"\n"
     "#include \"proxy_gen.h\"\n"
 	"\n"
-	"TSolutionsMap solutions_map {\n")
+	"SolutionsMap solutions_map {\n")
 foreach( problemsourcefile ${ADVENT_SOURCES} )
     string( REPLACE ".cpp" "" problemfullname ${problemsourcefile} )
     get_filename_component( problembasename ${problemfullname} NAME )
@@ -46,7 +46,7 @@ file ( WRITE ${CODEFORCES_PROXY_CXX}
 	"#include \"common/proxy_run_base.h\"\n"
     "#include \"proxy_gen.h\"\n"
 	"\n"
-	"TSolutionsMap solutions_map {\n")
+	"SolutionsMap solutions_map {\n")
 foreach( problemsourcefile ${CODEFORCES_SOURCES} )
     string( REPLACE ".cpp" "" problemfullname ${problemsourcefile} )
     get_filename_component( problembasename ${problemfullname} NAME )
@@ -56,7 +56,7 @@ foreach( problemsourcefile ${CODEFORCES_SOURCES} )
         file ( APPEND ${CODEFORCES_PROXY_CXX}
 			"\t{ \"${problembasename}\", main_${problembasename} },\n")
     endif ( NOT ${problembasename} MATCHES "^base|^main")
-endforeach( problemsourcefile ${HCODEFORCES_SOURCES} )
+endforeach( problemsourcefile ${CODEFORCES_SOURCES} )
 file ( APPEND ${CODEFORCES_PROXY_CXX} "};\n" )
 add_executable( codeforces ${CODEFORCES_SOURCES} ${CODEFORCES_PROXY_CXX} )
 
@@ -77,7 +77,7 @@ file ( WRITE ${GOOGLE_CODE_JAM_PROXY_CXX}
 	"#include \"common/proxy_run_base.h\"\n"
     "#include \"proxy_gen.h\"\n"
 	"\n"
-	"TSolutionsMap solutions_map {\n")
+	"SolutionsMap solutions_map {\n")
 foreach( problemsourcefile ${GOOGLE_CODE_JAM_SOURCES} )
     string( REPLACE ".cpp" "" problemfullname ${problemsourcefile} )
     get_filename_component( problembasename ${problemfullname} NAME )
@@ -101,7 +101,7 @@ file ( WRITE ${HACKERRANK_PROXY_CXX}
 	"#include \"common/proxy_run_base.h\"\n"
     "#include \"proxy_gen.h\"\n"
 	"\n"
-	"TSolutionsMap solutions_map {\n")
+	"SolutionsMap solutions_map {\n")
 foreach( problemsourcefile ${HACKERRANK_SOURCES} )
     string( REPLACE ".cpp" "" problemfullname ${problemsourcefile} )
     get_filename_component( problembasename ${problemfullname} NAME )
@@ -126,7 +126,7 @@ file ( WRITE ${HACKERRANK_PROXY_C_C}
     "#include <stdio.h>\n"
     "#include <string.h>\n"
 	"\n"
-    "int ProxyRun(const char* solution_name) {\n"
+    "int run_solution(const char* solution_name) {\n"
     "  if (0) return 0;\n")
 foreach( problemsourcefile ${HACKERRANK_C_SOURCES} )
     string( REPLACE ".c" "" problemfullname ${problemsourcefile} )
@@ -155,7 +155,7 @@ file ( WRITE ${IPCS_PROXY_CXX}
 	"#include \"common/proxy_run_base.h\"\n"
     "#include \"proxy_gen.h\"\n"
 	"\n"
-	"TSolutionsMap solutions_map {\n")
+	"SolutionsMap solutions_map {\n")
 foreach( problemsourcefile ${IPCS_SOURCES} )
     string( REPLACE ".cpp" "" problemfullname ${problemsourcefile} )
     get_filename_component( problembasename ${problemfullname} NAME )
@@ -179,7 +179,7 @@ file ( WRITE ${LEETCODE_PROXY_CXX}
 	"#include \"common/proxy_run_base.h\"\n"
     "#include \"proxy_gen.h\"\n"
 	"\n"
-	"TSolutionsMap solutions_map {\n")
+	"SolutionsMap solutions_map {\n")
 foreach( problemsourcefile ${LEETCODE_SOURCES} )
     string( REPLACE ".cpp" "" problemfullname ${problemsourcefile} )
     get_filename_component( problembasename ${problemfullname} NAME )
@@ -203,7 +203,7 @@ file ( WRITE ${TIMUS_PROXY_CXX}
 	"#include \"common/proxy_run_base.h\"\n"
     "#include \"proxy_gen.h\"\n"
 	"\n"
-	"TSolutionsMap solutions_map {\n")
+	"SolutionsMap solutions_map {\n")
 foreach( problemsourcefile ${TIMUS_SOURCES} )
     string( REPLACE ".cpp" "" problemfullname ${problemsourcefile} )
     get_filename_component( problembasename ${problemfullname} NAME )

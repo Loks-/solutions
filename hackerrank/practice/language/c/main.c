@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-int ProxyRun(const char* solution_name);
+int run_solution(const char* solution_name);
 
 int ProxyRunWithInput(const char* solution_name, const char* input_file_name) {
   FILE* fp = 0;
   if (input_file_name) fp = freopen(input_file_name, "r", stdin);
-  int solution_results = ProxyRun(solution_name);
+  int solution_results = run_solution(solution_name);
   if (fp) fclose(fp);
   return solution_results;
 }
@@ -45,8 +45,8 @@ int ProxyTest(const char* solution_name, const char* input_file_name,
   return CompareFiles(temp_file_name, test_file_name);
 }
 
-int ProxyAuto(const char* solution_name, const char* input_file_name,
-              const char* test_file_name) {
+int auto_run_or_test(const char* solution_name, const char* input_file_name,
+                     const char* test_file_name) {
   return test_file_name
              ? ProxyTest(solution_name, input_file_name, test_file_name)
              : ProxyRunWithInput(solution_name, input_file_name);
@@ -62,6 +62,6 @@ int main(int nargs, char** pargs) {
     scanf("%255s", buf);
     solution_name = buf;
   }
-  return ProxyAuto(solution_name, (nargs > 2) ? pargs[2] : 0,
-                   (nargs > 3) ? pargs[3] : 0);
+  return auto_run_or_test(solution_name, (nargs > 2) ? pargs[2] : 0,
+                          (nargs > 3) ? pargs[3] : 0);
 }

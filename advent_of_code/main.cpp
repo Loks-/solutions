@@ -7,10 +7,10 @@
 inline int ProxyRunAB(const std::string& solution,
                       const std::string& input_file_name) {
   auto it = solutions_map.find(solution);
-  if (it != solutions_map.end()) return ProxyRun(solution, input_file_name);
+  if (it != solutions_map.end()) return run_solution(solution, input_file_name);
   int r = 0;
-  r += ProxyRun(solution + "a", input_file_name);
-  r += ProxyRun(solution + "b", input_file_name);
+  r += run_solution(solution + "a", input_file_name);
+  r += run_solution(solution + "b", input_file_name);
   return r;
 }
 
