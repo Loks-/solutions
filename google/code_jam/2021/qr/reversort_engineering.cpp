@@ -5,8 +5,8 @@
 
 #include <functional>
 
-using TTree =
-    bst::Treap<false, true, unsigned, bst::info::Size, bst::action::Reverse>;
+using TTree = bst::Treap<false, true, unsigned, bst::subtree_data::Size,
+                         bst::action::Reverse>;
 using TNode = TTree::TNode;
 
 int main_reversort_engineering() {
@@ -21,8 +21,8 @@ int main_reversort_engineering() {
     } else {
       TTree tree(N);
 
-      std::function<TNode*(unsigned, unsigned)> Solve = [&](
-          unsigned n, unsigned c) -> TNode* {
+      std::function<TNode*(unsigned, unsigned)> Solve =
+          [&](unsigned n, unsigned c) -> TNode* {
         auto node = tree.New(N - n + 1);
         if (n == 1) {
           assert(c == 1);

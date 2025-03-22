@@ -29,7 +29,7 @@ int main_immunization_operation() {
         tree.SplitByKey(root, min(l0, l1), p1, pt);
         tree.SplitByKey(pt, max(l0, l1) + 1, p2, p3);
         if (p2) {
-          d += p2->info.size;
+          d += p2->subtree_data.size;
           tree.ReleaseTree(p2);
         }
         root = tree.Join(p1, p3);

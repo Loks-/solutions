@@ -36,7 +36,7 @@ int main_evolutionary_algorithms__treap() {
         uint64_t tt = upper_bound(vss.begin(), vss.end(), s1) - vss.begin();
         if (tt > 1) {
           TTree::SplitByKey(vn[i], (s1 + 1) * N, p1, p2);
-          uint64_t tc = (p1 ? p1->info.size : size_t(0));
+          uint64_t tc = (p1 ? p1->subtree_data.size : size_t(0));
           r += tc * (tt - tc);
           vn[i] = TTree::Join(p1, p2);
         }

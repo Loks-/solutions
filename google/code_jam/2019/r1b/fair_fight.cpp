@@ -1,12 +1,13 @@
-#include "common/binary_search_tree/info/max.h"
-#include "common/binary_search_tree/info/min.h"
+#include "common/binary_search_tree/subtree_data/max.h"
+#include "common/binary_search_tree/subtree_data/min.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
 using TTree =
     bst::Treap<true, true, int,
-               bst::info::Min<int, bst::info::Max<int, bst::info::None>>,
+               bst::subtree_data::Min<
+                   int, bst::subtree_data::Max<int, bst::subtree_data::None>>,
                bst::action::None, int>;
 using TNode = TTree::TNode;
 
@@ -34,22 +35,22 @@ int main_fair_fight() {
     for (int i = 0; i < n; ++i) {
       int k0 = vv[0][i];
       tree.SplitByKey(vh[0], k0, p0, p1);
-      int l0 = p1->info.max;
+      int l0 = p1->subtree_data.max_value;
       vh[0] = tree.Join(p0, p1);
       tree.SplitByKey(vh[1], k0 + 1, p0, p1);
-      int r0 = p1->info.min;
+      int r0 = p1->subtree_data.min_value;
       vh[1] = tree.Join(p0, p1);
       tree.SplitByKey(vh[2], k0 + k + 1, p0, p1);
-      int l1 = p1->info.max;
+      int l1 = p1->subtree_data.max_value;
       vh[2] = tree.Join(p0, p1);
       tree.SplitByKey(vh[3], k0 + k + 1, p0, p1);
-      int r1 = p1->info.min;
+      int r1 = p1->subtree_data.min_value;
       vh[3] = tree.Join(p0, p1);
       tree.SplitByKey(vh[2], k0 - k, p0, p1);
-      int l2 = p1->info.max;
+      int l2 = p1->subtree_data.max_value;
       vh[2] = tree.Join(p0, p1);
       tree.SplitByKey(vh[3], k0 - k, p0, p1);
-      int r2 = p1->info.min;
+      int r2 = p1->subtree_data.min_value;
       vh[3] = tree.Join(p0, p1);
       l1 = max(l0, l1);
       l2 = max(l0, l2);

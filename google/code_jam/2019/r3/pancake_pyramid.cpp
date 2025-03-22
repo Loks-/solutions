@@ -1,45 +1,45 @@
-#include "common/binary_search_tree/info/size.h"
+#include "common/binary_search_tree/subtree_data/size.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
 namespace {
-class PInfo : public bst::info::Size {
+class PInfo : public bst::subtree_data::Size {
  public:
-  using TBase = bst::info::Size;
-  using TSelf = PInfo;
-  static const bool use_data = true;
-  static const bool support_insert = false;
-  static const bool support_remove = false;
+  using Base = bst::subtree_data::Size;
+  using Self = PInfo;
+  static constexpr bool use_data = true;
+  static constexpr bool support_insert = false;
+  static constexpr bool support_remove = false;
 
   ModularDefault s, sp, sl, sr;
 
   template <class TNode>
-  void Update(TNode* node) {
-    TBase::Update(node);
-    uint64_t size_l = node->l ? node->l->info.size : 0,
-             size_r = node->r ? node->r->info.size : 0;
+  void update(TNode* node) {
+    Base::update(node);
+    uint64_t size_l = node->l ? node->l->subtree_data.size : 0,
+             size_r = node->r ? node->r->subtree_data.size : 0;
     s = sl = sr = 0;
-    sp = node->info.treap_height;
+    sp = node->subtree_data.treap_height;
     if (node->l) {
-      s += node->l->info.s;
-      s += node->l->info.sl * (size_r + 1);
-      sp += node->l->info.sp;
-      sl += node->l->info.sl;
-      sr += node->l->info.sr;
-      sr += (ModularDefault(node->info.treap_height * size_l) -
-             node->l->info.sp) *
+      s += node->l->subtree_data.s;
+      s += node->l->subtree_data.sl * (size_r + 1);
+      sp += node->l->subtree_data.sp;
+      sl += node->l->subtree_data.sl;
+      sr += node->l->subtree_data.sr;
+      sr += (ModularDefault(node->subtree_data.treap_height * size_l) -
+             node->l->subtree_data.sp) *
             (size_r + 1);
     }
     if (node->r) {
-      s += node->r->info.s;
-      s += node->r->info.sr * (size_l + 1);
-      sp += node->r->info.sp;
-      sl += node->r->info.sl;
-      sr += node->r->info.sr;
-      sl += (ModularDefault(node->info.treap_height * size_r) -
-             node->r->info.sp) *
+      s += node->r->subtree_data.s;
+      s += node->r->subtree_data.sr * (size_l + 1);
+      sp += node->r->subtree_data.sp;
+      sl += node->r->subtree_data.sl;
+      sr += node->r->subtree_data.sr;
+      sl += (ModularDefault(node->subtree_data.treap_height * size_r) -
+             node->r->subtree_data.sp) *
             (size_l + 1);
     }
   }
@@ -59,11 +59,11 @@ int main_pancake_pyramid() {
     vector<TNode*> vn;
     for (unsigned p : vs) {
       TNode* node = tree.New({});
-      node->info.treap_height = p;
+      node->subtree_data.treap_height = p;
       vn.push_back(node);
     }
     TNode* head = TTree::BuildTree(vn);
-    cout << "Case #" << iT << ": " << head->info.s << endl;
+    cout << "Case #" << iT << ": " << head->subtree_data.s << endl;
   }
   return 0;
 }

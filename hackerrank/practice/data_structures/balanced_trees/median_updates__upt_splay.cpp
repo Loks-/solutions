@@ -32,7 +32,7 @@ int main_median_updates__upt_splay() {
     if (root == 0) {
       cout << "Wrong!" << endl;
     } else {
-      unsigned size = root->info.size;
+      unsigned size = root->subtree_data.size;
       int64_t s = (TTree::FindByOrder(root, (size - 1) / 2)->key +
                    TTree::FindByOrder(root, size / 2)->key) /
                   2;

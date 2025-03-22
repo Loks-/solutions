@@ -1,36 +1,39 @@
 // https://www.hackerrank.com/challenges/airports
 
-#include "common/binary_search_tree/info/size.h"
+#include "common/binary_search_tree/subtree_data/size.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/binary_search_tree/utils/get_segment_info_by_key.h"
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
 namespace {
-class NodeInfoAirports : public bst::info::Size {
+class SubtreeData : public bst::subtree_data::Size {
  public:
-  using TBase = bst::info::Size;
-  static const bool use_data = false;
-  static const bool support_insert = false;
-  static const bool support_remove = false;
+  using Base = bst::subtree_data::Size;
+
+  static constexpr bool use_data = false;
+  static constexpr bool support_insert = false;
+  static constexpr bool support_remove = false;
 
   int64_t l, r, d;
 
   template <class TNode>
-  void Update(TNode* node) {
-    TBase::Update(node);
-    l = (node->l) ? node->l->info.l : node->key;
-    r = (node->r) ? node->r->info.r : node->key;
+  void update(TNode* node) {
+    Base::update(node);
+    l = (node->l) ? node->l->subtree_data.l : node->key;
+    r = (node->r) ? node->r->subtree_data.r : node->key;
     d = 0;
     if (node->l)
-      d = std::max(d, std::max(node->l->info.d, node->key - node->l->info.r));
+      d = std::max(d, std::max(node->l->subtree_data.d,
+                               node->key - node->l->subtree_data.r));
     if (node->r)
-      d = std::max(d, std::max(node->r->info.d, node->r->info.l - node->key));
+      d = std::max(d, std::max(node->r->subtree_data.d,
+                               node->r->subtree_data.l - node->key));
   }
 };
 }  // namespace
 
-using TTree = bst::Treap<true, false, MetaEmpty, NodeInfoAirports>;
+using TTree = bst::Treap<true, false, MetaEmpty, SubtreeData>;
 using TNode = TTree::TNode;
 
 int main_airports() {
@@ -45,7 +48,7 @@ int main_airports() {
     TTree tree(n);
     cout << 0 << " " << max<int64_t>(d - (r - l), 0);
     TNode* head = nullptr;
-    typename TNode::TInfo info;
+    typename TNode::TInfo subtree_data;
     for (unsigned i = 2; i < n; ++i) {
       if (v[i] < l) {
         head = tree.InsertNewNode(head, {}, l);
@@ -56,13 +59,15 @@ int main_airports() {
       } else {
         head = tree.InsertNewNode(head, {}, v[i]);
       }
-      info.size = 0;
-      head = bst::GetSegmentInfoByKey<TTree>(head, r - d + 1, l + d, info);
+      subtree_data.size = 0;
+      head =
+          bst::GetSegmentInfoByKey<TTree>(head, r - d + 1, l + d, subtree_data);
       int64_t lrd = max<int64_t>(d - (r - l), 0);
-      if (info.size == 0) {
+      if (subtree_data.size == 0) {
         cout << " " << lrd;
       } else {
-        int64_t md = max(info.l - (r - d), max(info.d, (l + d) - info.r));
+        int64_t md = max(subtree_data.l - (r - d),
+                         max(subtree_data.d, (l + d) - subtree_data.r));
         cout << " " << max(lrd, l - r + 2 * d - md);
       }
     }

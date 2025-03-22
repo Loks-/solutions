@@ -1,15 +1,16 @@
 // https://www.hackerrank.com/challenges/direct-connections
 
-#include "common/binary_search_tree/info/size.h"
-#include "common/binary_search_tree/info/sum_keys.h"
+#include "common/binary_search_tree/subtree_data/size.h"
+#include "common/binary_search_tree/subtree_data/sum_keys.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/modular_io.h"
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
-using TTree = bst::Treap<true, false, MetaEmpty,
-                         bst::info::SumKeys<uint64_t, bst::info::Size>,
-                         bst::action::None, uint64_t>;
+using TTree =
+    bst::Treap<true, false, MetaEmpty,
+               bst::subtree_data::SumKeys<uint64_t, bst::subtree_data::Size>,
+               bst::action::None, uint64_t>;
 using TNode = TTree::TNode;
 
 int main_direct_connections__treap() {
@@ -28,8 +29,12 @@ int main_direct_connections__treap() {
     for (auto px : vpx) {
       tree.SplitByKey(root, px.second, l, r);
       ModularDefault s = 0;
-      if (l) s += ModularDefault(l->info.size * px.second - l->info.sum_keys);
-      if (r) s += ModularDefault(r->info.sum_keys - r->info.size * px.second);
+      if (l)
+        s += ModularDefault(l->subtree_data.size * px.second -
+                            l->subtree_data.sum_keys);
+      if (r)
+        s += ModularDefault(r->subtree_data.sum_keys -
+                            r->subtree_data.size * px.second);
       total += s * ModularDefault(px.first);
       TNode* m = tree.New({}, px.second);
       root = tree.Join(tree.Join(l, m), r);
