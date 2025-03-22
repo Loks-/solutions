@@ -2,7 +2,7 @@
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
-using TTree = bst::SplayTree<true, TEmpty>;
+using TTree = bst::SplayTree<true, MetaEmpty>;
 using TNode = TTree::TNode;
 
 int main_immunization_operation() {

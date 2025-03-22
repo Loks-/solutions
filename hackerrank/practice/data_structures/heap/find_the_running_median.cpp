@@ -6,7 +6,7 @@
 
 #include <iomanip>
 
-using TTree = bst::AVLTree<false, TEmpty>;
+using TTree = bst::AVLTree<false, MetaEmpty>;
 using TNode = TTree::TNode;
 
 int main_find_the_running_median() {
@@ -18,7 +18,7 @@ int main_find_the_running_median() {
   for (unsigned i = 0; i < N; ++i) {
     int64_t x;
     cin >> x;
-    root = tree.InsertNewNode(root, TEmpty(), x);
+    root = tree.InsertNewNode(root, {}, x);
     cout << bst::Median<TNode, double>(root) << endl;
   }
   return 0;

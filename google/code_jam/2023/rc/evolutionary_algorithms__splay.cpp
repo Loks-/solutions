@@ -4,7 +4,7 @@
 
 #include <queue>
 
-using TTree = bst::SplayTree<true, TEmpty>;
+using TTree = bst::SplayTree<true, MetaEmpty>;
 using TNode = TTree::TNode;
 
 int main_evolutionary_algorithms__splay() {

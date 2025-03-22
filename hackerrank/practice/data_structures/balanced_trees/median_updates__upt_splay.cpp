@@ -5,7 +5,7 @@
 
 #include <iomanip>
 
-using TTree = bst::SplayTree<true, TEmpty>;
+using TTree = bst::SplayTree<true, MetaEmpty>;
 using TNode = TTree::TNode;
 
 int main_median_updates__upt_splay() {
@@ -20,7 +20,7 @@ int main_median_updates__upt_splay() {
     cin >> c >> x;
     x *= 2;
     if (c == 'a') {
-      root = tree.InsertNewNode(root, TEmpty(), x);
+      root = tree.InsertNewNode(root, {}, x);
     } else if (c == 'r') {
       TNode* node = TTree::FindByKey(root, x);
       if (node == 0) {

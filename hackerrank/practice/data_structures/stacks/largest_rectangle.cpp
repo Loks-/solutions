@@ -3,7 +3,7 @@
 #include "common/binary_search_tree/treap.h"
 #include "common/stl/base.h"
 
-using TTreap = bst::Treap<false, false, TEmpty>;
+using TTreap = bst::Treap<false, false, MetaEmpty>;
 using TNode = TTreap::TNode;
 
 int main_largest_rectangle() {

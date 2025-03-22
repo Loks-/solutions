@@ -6,7 +6,7 @@
 
 #include <iomanip>
 
-using TTree = bst::RedBlackTree<TEmpty>;
+using TTree = bst::RedBlackTree<MetaEmpty>;
 using TNode = TTree::TNode;
 
 int main_median_updates__upt_red_black() {
@@ -21,7 +21,7 @@ int main_median_updates__upt_red_black() {
     cin >> c >> x;
     x *= 2;
     if (c == 'a') {
-      root = tree.InsertNewNode(root, TEmpty(), x);
+      root = tree.InsertNewNode(root, {}, x);
     } else if (c == 'r') {
       TNode* node = TTree::FindByKey(root, x);
       if (node == 0) {

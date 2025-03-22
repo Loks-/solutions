@@ -30,11 +30,10 @@ class NodeInfoAirports : public bst::info::Size {
 };
 }  // namespace
 
-using TTree = bst::Treap<true, false, TEmpty, NodeInfoAirports>;
+using TTree = bst::Treap<true, false, MetaEmpty, NodeInfoAirports>;
 using TNode = TTree::TNode;
 
 int main_airports() {
-  TEmpty e;
   unsigned T;
   cin >> T;
   for (unsigned it = 0; it < T; ++it) {
@@ -49,13 +48,13 @@ int main_airports() {
     typename TNode::TInfo info;
     for (unsigned i = 2; i < n; ++i) {
       if (v[i] < l) {
-        head = tree.InsertNewNode(head, e, l);
+        head = tree.InsertNewNode(head, {}, l);
         l = v[i];
       } else if (r < v[i]) {
-        head = tree.InsertNewNode(head, e, r);
+        head = tree.InsertNewNode(head, {}, r);
         r = v[i];
       } else {
-        head = tree.InsertNewNode(head, e, v[i]);
+        head = tree.InsertNewNode(head, {}, v[i]);
       }
       info.size = 0;
       head = bst::GetSegmentInfoByKey<TTree>(head, r - d + 1, l + d, info);

@@ -46,7 +46,7 @@ class PInfo : public bst::info::Size {
 };
 }  // namespace
 
-using TTree = bst::Treap<false, false, TEmpty, PInfo>;
+using TTree = bst::Treap<false, false, MetaEmpty, PInfo>;
 using TNode = typename TTree::TNode;
 
 int main_pancake_pyramid() {
@@ -58,7 +58,7 @@ int main_pancake_pyramid() {
     TTree tree(S);
     vector<TNode*> vn;
     for (unsigned p : vs) {
-      TNode* node = tree.New(TEmpty());
+      TNode* node = tree.New({});
       node->info.treap_height = p;
       vn.push_back(node);
     }

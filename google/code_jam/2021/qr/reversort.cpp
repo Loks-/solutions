@@ -7,7 +7,7 @@
 #include "common/vector/read.h"
 
 using TTree =
-    bst::Treap<false, true, TEmpty, bst::info::Size, bst::action::Reverse>;
+    bst::Treap<false, true, MetaEmpty, bst::info::Size, bst::action::Reverse>;
 using TNode = TTree::TNode;
 
 int main_reversort() {
