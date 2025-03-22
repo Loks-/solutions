@@ -15,7 +15,8 @@ int main_manasa_and_factorials() {
   for (unsigned it = 0; it < T; ++it) {
     uint64_t N;
     cin >> N;
-    cout << LowerBoundF(0ull, 50000000000000000ull, N, f) << endl;
+    cout << lower_bound_with_comparator(0ull, 50000000000000000ull, N, f)
+         << endl;
   }
   return 0;
 }

@@ -12,14 +12,18 @@ int main_incremental_house_of_pancakes() {
   for (unsigned it = 1; it <= T; ++it) {
     cin >> l >> r;
     if (l >= r) {
-      k = LowerBoundF<uint64_t, uint64_t>(0, maxv, l - r + 1, f1) - 1;
+      k = lower_bound_with_comparator<uint64_t, uint64_t>(0, maxv, l - r + 1,
+                                                          f1) -
+          1;
       l -= f1(k);
     } else {
-      k = LowerBoundF<uint64_t, uint64_t>(0, maxv, r - l, f1) - 1;
+      k = lower_bound_with_comparator<uint64_t, uint64_t>(0, maxv, r - l, f1) -
+          1;
       r -= f1(k);
       if (k < r) r -= ++k;
     }
-    auto j = LowerBoundF<uint64_t, uint64_t>(0, maxv, r + 1, f2) - 1;
+    auto j =
+        lower_bound_with_comparator<uint64_t, uint64_t>(0, maxv, r + 1, f2) - 1;
     l -= f2(j) - j;
     r -= f2(j);
     k += 2 * j + 1;

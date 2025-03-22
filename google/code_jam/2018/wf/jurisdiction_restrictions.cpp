@@ -65,8 +65,8 @@ int main_jurisdiction_restrictions() {
       auto gf = MaxFlow(g);
       return gf == g_max_flow;
     };
-    auto t1 = LowerBoundB<int64_t>(0, max_flow, f1);
-    auto t2 = LowerBoundB<int64_t>(0, max_flow, f2);
+    auto t1 = lower_bound_with_predicate<int64_t>(0, max_flow, f1);
+    auto t2 = lower_bound_with_predicate<int64_t>(0, max_flow, f2);
     cout << "Case #" << it << ": " << t2 - t1 + 1 << endl;
   }
   return 0;

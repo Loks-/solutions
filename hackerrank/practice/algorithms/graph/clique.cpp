@@ -13,7 +13,7 @@ int main_clique() {
       unsigned x0 = n / k, x1 = x0 + 1, l1 = n % k, l0 = k - l1;
       return n * (n - 1) - l0 * x0 * (x0 - 1) - l1 * x1 * (x1 - 1);
     };
-    cout << LowerBoundF(1u, n + 1, 2 * m, f) << endl;
+    cout << lower_bound_with_comparator(1u, n + 1, 2 * m, f) << endl;
   }
   return 0;
 }

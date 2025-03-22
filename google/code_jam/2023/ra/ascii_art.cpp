@@ -11,7 +11,7 @@ int main_ascii_art() {
   for (unsigned it = 1; it <= T; ++it) {
     cin >> N;
     N -= 1;
-    auto k = UpperBoundF(0u, (1u << 20), N / M, F);
+    auto k = upper_bound_with_comparator(0u, (1u << 20), N / M, F);
     cout << "Case #" << it << ": " << char('A' + ((N - M * F(k - 1)) / k))
          << endl;
   }

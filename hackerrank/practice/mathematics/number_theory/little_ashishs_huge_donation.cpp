@@ -10,7 +10,7 @@ int main_little_ashishs_huge_donation() {
   for (unsigned it = 0; it < T; ++it) {
     uint64_t N;
     cin >> N;
-    cout << UpperBoundF(0, 200000000, N, f) - 1 << endl;
+    cout << upper_bound_with_comparator(0, 200000000, N, f) - 1 << endl;
   }
   return 0;
 }
