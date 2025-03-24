@@ -4,7 +4,7 @@
 #include "common/binary_search_tree/perfect_tree.h"
 #include "common/binary_search_tree/subtree_data/size.h"
 #include "common/binary_search_tree/subtree_data/sum.h"
-#include "common/binary_search_tree/subtree_data/update_node_to_root.h"
+#include "common/binary_search_tree/subtree_data/utils/update_node_to_root.h"
 #include "common/binary_search_tree/utils/prefix_sum_upper_bound.h"
 #include "common/stl/base.h"
 
