@@ -5,9 +5,8 @@
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
-using TTreap =
-    bst::Treap<false, true, uint64_t,
-               bst::subtree_data::GCD<uint64_t, bst::subtree_data::None>>;
+using TGCD = bst::subtree_data::GCD<uint64_t>;
+using TTreap = bst::Treap<false, true, uint64_t, std::tuple<TGCD>>;
 using TNode = TTreap::TNode;
 
 int main_the_chosen_one__treap() {
@@ -25,7 +24,7 @@ int main_the_chosen_one__treap() {
     uint64_t value = node->data;
     node->data = 0;
     bst::subtree_data::update_node_to_root(node);
-    uint64_t gcd = root->subtree_data.gcd_value;
+    uint64_t gcd = TGCD::get(root);
     if ((value % gcd) != 0) {
       cout << gcd << endl;
       return 0;

@@ -7,10 +7,10 @@
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
-using TTree =
-    bst::Treap<true, false, MetaEmpty,
-               bst::subtree_data::SumKeys<uint64_t, bst::subtree_data::Size>,
-               bst::action::None, uint64_t>;
+using TSumKeys = bst::subtree_data::SumKeys<uint64_t>;
+using TSize = bst::subtree_data::Size;
+using TTree = bst::Treap<true, false, MetaEmpty, std::tuple<TSumKeys, TSize>,
+                         bst::action::None, uint64_t>;
 using TNode = TTree::TNode;
 
 int main_direct_connections__treap() {
@@ -30,11 +30,11 @@ int main_direct_connections__treap() {
       tree.SplitByKey(root, px.second, l, r);
       ModularDefault s = 0;
       if (l)
-        s += ModularDefault(l->subtree_data.size * px.second -
-                            l->subtree_data.sum_keys);
+        s += ModularDefault(bst::subtree_data::size(l) * px.second -
+                            TSumKeys::get(l));
       if (r)
-        s += ModularDefault(r->subtree_data.sum_keys -
-                            r->subtree_data.size * px.second);
+        s += ModularDefault(TSumKeys::get(r) -
+                            bst::subtree_data::size(r) * px.second);
       total += s * ModularDefault(px.first);
       TNode* m = tree.New({}, px.second);
       root = tree.Join(tree.Join(l, m), r);

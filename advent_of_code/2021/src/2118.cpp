@@ -3,13 +3,12 @@
 #include "common/binary_search_tree/base/next_leaf.h"
 #include "common/binary_search_tree/base/prev_leaf.h"
 #include "common/binary_search_tree/base_tree.h"
-#include "common/binary_search_tree/subtree_data/none.h"
 #include "common/stl/base.h"
 #include "common/vector/read_lines.h"
 
 #include <functional>
 
-using TTree = bst::BaseTree<true, unsigned, bst::subtree_data::None>;
+using TTree = bst::BaseTree<true, unsigned, std::tuple<>>;
 using TNode = TTree::TNode;
 
 int main_2118() {

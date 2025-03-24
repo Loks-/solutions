@@ -9,6 +9,9 @@
 #include "common/stl/pair.h"
 
 namespace {
+using TSum = bst::subtree_data::Sum<ModularDefault>;
+using TSize = bst::subtree_data::Size;
+
 class ActionAddArithmeticSequence : public bst::action::Reverse {
  public:
   using TBase = bst::action::Reverse;
@@ -36,16 +39,16 @@ class ActionAddArithmeticSequence : public bst::action::Reverse {
   void ReverseSubtree(TNode* node) {
     TBase::ReverseSubtree(node);
     if (!IsValueEmpty()) {
-      value.first += value.second * (node->subtree_data.size - 1);
+      value.first += value.second * (bst::subtree_data::size(node) - 1);
       value.second = -value.second;
     }
   }
 
   template <class TNode>
   void Add(TNode* node, TActionValue add_value) {
-    ModularDefault s = node->subtree_data.size;
-    node->subtree_data.sum_value +=
-        add_value.first * s + add_value.second * s * (s - 1) / 2;
+    ModularDefault s = bst::subtree_data::size(node);
+    TSum::set(node, TSum::get(node) + add_value.first * s +
+                        add_value.second * s * (s - 1) / 2);
     value += add_value;
   }
 
@@ -53,7 +56,7 @@ class ActionAddArithmeticSequence : public bst::action::Reverse {
   void Apply(TNode* node) {
     TBase::Apply(node);
     if (!IsValueEmpty()) {
-      ModularDefault lsize = (node->l ? node->l->subtree_data.size : 0);
+      ModularDefault lsize = bst::subtree_data::size(node->l);
       node->data += value.first + value.second * lsize;
       if (node->l) node->l->AddAction(value);
       if (node->r)
@@ -70,10 +73,8 @@ int main_heavy_light_2_white_falcon__lct() {
   cin >> N >> Q;
   TreeGraph tree(N);
   tree.ReadEdges(true);
-  graph::LinkCutTree<
-      ModularDefault,
-      bst::subtree_data::Sum<ModularDefault, bst::subtree_data::Size>,
-      ActionAddArithmeticSequence>
+  graph::LinkCutTree<ModularDefault, std::tuple<TSize, TSum>,
+                     ActionAddArithmeticSequence>
       lct(tree);
 
   for (unsigned iQ = 0; iQ < Q; ++iQ) {
@@ -84,7 +85,7 @@ int main_heavy_light_2_white_falcon__lct() {
       lct.AddActionOnPath(u, v,
                           make_pair<ModularDefault, ModularDefault>(x, x));
     } else if (t == 2) {
-      cout << lct.GetPathInfo(u, v).sum_value << endl;
+      cout << TSum::get(lct.GetPathInfo(u, v)) << endl;
     }
   }
   return 0;

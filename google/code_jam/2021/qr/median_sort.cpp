@@ -3,7 +3,7 @@
 #include "common/stl/base.h"
 #include "common/vector/write.h"
 
-using TTree = bst::Treap<false, true, unsigned, bst::subtree_data::Size>;
+using TTree = bst::Treap<false, true, unsigned>;
 using TNode = TTree::TNode;
 
 int main_median_sort() {

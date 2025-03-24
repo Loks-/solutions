@@ -5,10 +5,9 @@
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
-using TTree =
-    bst::Treap<true, false, uint64_t,
-               bst::subtree_data::Max<uint64_t, bst::subtree_data::None>,
-               bst::action::None, uint64_t>;
+using TMax = bst::subtree_data::Max<uint64_t>;
+using TTree = bst::Treap<true, false, uint64_t, std::tuple<TMax>,
+                         bst::action::None, uint64_t>;
 using TNode = TTree::TNode;
 
 int main_subsequence_weighting__treap() {
@@ -22,10 +21,10 @@ int main_subsequence_weighting__treap() {
     TNode *root = 0, *l, *r;
     for (unsigned i = 0; i < N; ++i) {
       tree.SplitByKey(root, va[i], l, r);
-      TNode* m = tree.New(vw[i] + (l ? l->subtree_data.max_value : 0), va[i]);
+      TNode* m = tree.New(vw[i] + (l ? TMax::get(l) : 0), va[i]);
       root = tree.Join(tree.Join(l, m), r);
     }
-    cout << root->subtree_data.max_value << endl;
+    cout << TMax::get(root) << endl;
     tree.ReleaseTree(root);
   }
   return 0;

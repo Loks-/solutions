@@ -1,12 +1,14 @@
 #include "common/binary_search_tree/action/reverse.h"
 #include "common/binary_search_tree/base/traversal.h"
+#include "common/binary_search_tree/subtree_data/size.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/stl/base.h"
 
 #include <functional>
 
-using TTree = bst::Treap<false, true, unsigned, bst::subtree_data::Size,
-                         bst::action::Reverse>;
+using TTree =
+    bst::Treap<false, true, unsigned, std::tuple<bst::subtree_data::Size>,
+               bst::action::Reverse>;
 using TNode = TTree::TNode;
 
 int main_reversort_engineering() {

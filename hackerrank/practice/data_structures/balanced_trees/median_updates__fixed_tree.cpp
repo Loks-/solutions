@@ -11,9 +11,9 @@
 #include <iomanip>
 #include <unordered_set>
 
+using TSum = bst::subtree_data::Sum<unsigned>;
 using TTree =
-    bst::PerfectTree<true, unsigned,
-                     bst::subtree_data::Sum<unsigned, bst::subtree_data::Size>>;
+    bst::PerfectTree<true, unsigned, std::tuple<bst::subtree_data::Size, TSum>>;
 using TNode = TTree::TNode;
 
 int main_median_updates__fixed_tree() {
@@ -47,13 +47,13 @@ int main_median_updates__fixed_tree() {
       node->data -= 1;
     }
     bst::subtree_data::update_node_to_root(node);
-    if (root->subtree_data.sum_value == 0) {
+    if (TSum::get(root) == 0) {
       cout << "Wrong!" << endl;
       continue;
     }
-    unsigned size = root->subtree_data.sum_value;
-    int64_t s = (bst::PrefixSumUpperBound(root, (size - 1) / 2)->key +
-                 bst::PrefixSumUpperBound(root, size / 2)->key) /
+    unsigned size = TSum::get(root);
+    int64_t s = (bst::PrefixSumUpperBound<TSum>(root, (size - 1) / 2)->key +
+                 bst::PrefixSumUpperBound<TSum>(root, size / 2)->key) /
                 2;
     if (s & 1)
       cout << s / 2.0 << endl;

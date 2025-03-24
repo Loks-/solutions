@@ -1,6 +1,7 @@
 // https://www.hackerrank.com/challenges/median
 
 #include "common/binary_search_tree/splay_tree.h"
+#include "common/binary_search_tree/subtree_data/size.h"
 #include "common/stl/base.h"
 
 #include <iomanip>
@@ -32,7 +33,7 @@ int main_median_updates__upt_splay() {
     if (root == 0) {
       cout << "Wrong!" << endl;
     } else {
-      unsigned size = root->subtree_data.size;
+      unsigned size = bst::subtree_data::size(root);
       int64_t s = (TTree::FindByOrder(root, (size - 1) / 2)->key +
                    TTree::FindByOrder(root, size / 2)->key) /
                   2;

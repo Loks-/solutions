@@ -1,4 +1,5 @@
 #include "common/binary_search_tree/splay_tree.h"
+#include "common/binary_search_tree/subtree_data/size.h"
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
@@ -29,7 +30,7 @@ int main_immunization_operation() {
         tree.SplitByKey(root, min(l0, l1), p1, pt);
         tree.SplitByKey(pt, max(l0, l1) + 1, p2, p3);
         if (p2) {
-          d += p2->subtree_data.size;
+          d += bst::subtree_data::size(p2);
           tree.ReleaseTree(p2);
         }
         root = tree.Join(p1, p3);
