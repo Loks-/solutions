@@ -1,5 +1,5 @@
-#include "common/binary_search_tree/action/reverse.h"
 #include "common/binary_search_tree/base/order.h"
+#include "common/binary_search_tree/deferred/reverse.h"
 #include "common/binary_search_tree/subtree_data/size.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/binary_search_tree/utils/add_action_to_segment_by_index.h"
@@ -9,7 +9,7 @@
 
 using TTree =
     bst::Treap<false, true, MetaEmpty, std::tuple<bst::subtree_data::Size>,
-               bst::action::Reverse>;
+               std::tuple<bst::deferred::Reverse>>;
 using TNode = TTree::TNode;
 
 int main_reversort() {
@@ -27,7 +27,8 @@ int main_reversort() {
     for (unsigned i = 0; i < N - 1; ++i) {
       auto position = bst::base::Order(tree.NodeByRawIndex(i));
       c += position - i + 1;
-      r = bst::AddActionToSegmentByIndex<TTree>(r, i, position + 1, true);
+      r = bst::AddActionToSegmentByIndex<bst::deferred::Reverse, TTree>(
+          r, i, position + 1, MetaEmpty{});
     }
     cout << "Case #" << it + 1 << ": " << c << endl;
   }

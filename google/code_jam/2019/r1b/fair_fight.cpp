@@ -7,7 +7,7 @@
 using TMin = bst::subtree_data::Min<int>;
 using TMax = bst::subtree_data::Max<int>;
 using TTree =
-    bst::Treap<true, true, int, std::tuple<TMin, TMax>, bst::action::None, int>;
+    bst::Treap<true, true, int, std::tuple<TMin, TMax>, std::tuple<>, int>;
 using TNode = TTree::TNode;
 
 int main_fair_fight() {

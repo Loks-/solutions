@@ -1,5 +1,5 @@
-#include "common/binary_search_tree/action/reverse.h"
 #include "common/binary_search_tree/base/traversal.h"
+#include "common/binary_search_tree/deferred/reverse.h"
 #include "common/binary_search_tree/subtree_data/size.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/stl/base.h"
@@ -8,7 +8,7 @@
 
 using TTree =
     bst::Treap<false, true, unsigned, std::tuple<bst::subtree_data::Size>,
-               bst::action::Reverse>;
+               std::tuple<bst::deferred::Reverse>>;
 using TNode = TTree::TNode;
 
 int main_reversort_engineering() {
@@ -32,7 +32,7 @@ int main_reversort_engineering() {
         } else {
           if (c >= 2 * n - 1) {
             auto r = Solve(n - 1, c - n);
-            r->AddAction(true);
+            bst::deferred::reverse_subtree(r);
             return tree.Join(node, r);
           } else {
             auto r = Solve(n - 1, c - 1);

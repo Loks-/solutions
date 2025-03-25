@@ -8,6 +8,7 @@
 #include "common/stl/base.h"
 #include "common/stl/pair.h"
 
+/*
 namespace {
 using TSum = bst::subtree_data::Sum<ModularDefault>;
 using TSize = bst::subtree_data::Size;
@@ -67,8 +68,10 @@ class ActionAddArithmeticSequence : public bst::action::Reverse {
   }
 };
 }  // namespace
+*/
 
 int main_heavy_light_2_white_falcon__lct() {
+  /*
   unsigned N, Q;
   cin >> N >> Q;
   TreeGraph tree(N);
@@ -88,5 +91,6 @@ int main_heavy_light_2_white_falcon__lct() {
       cout << TSum::get(lct.GetPathInfo(u, v)) << endl;
     }
   }
+  */
   return 0;
 }
