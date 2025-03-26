@@ -23,14 +23,14 @@ int main_the_chosen_one__treap() {
     TNode* node = treap.NodeByRawIndex(i);
     uint64_t value = node->data;
     node->data = 0;
-    bst::subtree_data::update_node_to_root(node);
+    bst::subtree_data::propagate_to_root(node);
     uint64_t gcd = TGCD::get(root);
     if ((value % gcd) != 0) {
       cout << gcd << endl;
       return 0;
     }
     node->data = value;
-    bst::subtree_data::update_node_to_root(node);
+    bst::subtree_data::propagate_to_root(node);
   }
   return 0;
 }
