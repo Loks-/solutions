@@ -42,7 +42,7 @@ int main_reversort_engineering() {
       };
 
       auto r = Solve(N, C);
-      auto v = bst::base::Traverse<TNode, TNode::TData>(
+      auto v = bst::base::Traverse<TNode, TNode::DataType>(
           r, bst::base::ETraversalOrder::Inorder);
       std::reverse(v.begin(), v.end());
       cout << "Case #" << it + 1 << ":";

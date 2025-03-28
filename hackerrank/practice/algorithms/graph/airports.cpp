@@ -19,18 +19,21 @@ class PSubtreeData : public bst::subtree_data::Base {
   template <class TNode>
   void update(TNode* node) {
     Base::update(node);
-    l = (node->l) ? node->l->subtree_data.template get<Self>().l : node->key;
-    r = (node->r) ? node->r->subtree_data.template get<Self>().r : node->key;
+    l = (node->left) ? node->left->subtree_data.template get<Self>().l
+                     : node->key;
+    r = (node->right) ? node->right->subtree_data.template get<Self>().r
+                      : node->key;
     d = 0;
-    if (node->l)
+    if (node->left)
       d = std::max(
-          d,
-          std::max(node->l->subtree_data.template get<Self>().d,
-                   node->key - node->l->subtree_data.template get<Self>().r));
-    if (node->r)
-      d = std::max(d, std::max(node->r->subtree_data.template get<Self>().d,
-                               node->r->subtree_data.template get<Self>().l -
-                                   node->key));
+          d, std::max(
+                 node->left->subtree_data.template get<Self>().d,
+                 node->key - node->left->subtree_data.template get<Self>().r));
+    if (node->right)
+      d = std::max(
+          d, std::max(
+                 node->right->subtree_data.template get<Self>().d,
+                 node->right->subtree_data.template get<Self>().l - node->key));
   }
 };
 }  // namespace
@@ -61,7 +64,7 @@ int main_airports() {
       } else {
         head = tree.InsertNewNode(head, {}, v[i]);
       }
-      typename TNode::TInfo subtree_data;
+      typename TNode::SubtreeDataType subtree_data;
       head =
           bst::GetSegmentInfoByKey<TTree>(head, r - d + 1, l + d, subtree_data);
       int64_t lrd = max<int64_t>(d - (r - l), 0);

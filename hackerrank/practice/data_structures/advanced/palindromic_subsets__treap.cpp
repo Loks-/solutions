@@ -41,8 +41,8 @@ class RotateVector : public bst::deferred::Base {
   constexpr void apply(Node* node) {
     if (r_ != 0) {
       rotate_one(node->data, r_);
-      rotate_external(node->l, r_);
-      rotate_external(node->r, r_);
+      rotate_external(node->left, r_);
+      rotate_external(node->right, r_);
       r_ = 0;
     }
   }

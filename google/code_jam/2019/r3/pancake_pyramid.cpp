@@ -22,12 +22,12 @@ class PInfo : public bst::subtree_data::Base {
 
   template <class TNode>
   void update(TNode* node) {
-    uint64_t size_l = bst::subtree_data::size(node->l),
-             size_r = bst::subtree_data::size(node->r);
+    uint64_t size_l = bst::subtree_data::size(node->left),
+             size_r = bst::subtree_data::size(node->right);
     s = sl = sr = 0;
     sp = treap_height(node);
-    if (node->l) {
-      const auto& l = node->l->subtree_data.template get<PInfo>();
+    if (node->left) {
+      const auto& l = node->left->subtree_data.template get<PInfo>();
       s += l.s;
       s += l.sl * (size_r + 1);
       sp += l.sp;
@@ -35,8 +35,8 @@ class PInfo : public bst::subtree_data::Base {
       sr += l.sr;
       sr += (ModularDefault(treap_height(node) * size_l) - l.sp) * (size_r + 1);
     }
-    if (node->r) {
-      const auto& r = node->r->subtree_data.template get<PInfo>();
+    if (node->right) {
+      const auto& r = node->right->subtree_data.template get<PInfo>();
       s += r.s;
       s += r.sr * (size_l + 1);
       sp += r.sp;

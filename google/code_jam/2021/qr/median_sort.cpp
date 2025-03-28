@@ -40,7 +40,7 @@ int main_median_sort() {
       }
       root = tree.InsertNewNodeByOrder(root, i, l);
     }
-    auto v = bst::base::Traverse<TNode, TNode::TData>(
+    auto v = bst::base::Traverse<TNode, TNode::DataType>(
         root, bst::base::ETraversalOrder::Inorder);
     nvector::Write(v);
     cin >> jr;

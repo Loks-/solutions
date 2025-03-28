@@ -24,8 +24,8 @@ int main_2118() {
         if (s[i] == ']') --d;
         if ((s[i] == ',') && (d == 0)) {
           auto n = tree.New(0);
-          n->SetL(Parse(s.substr(0, i)));
-          n->SetR(Parse(s.substr(i + 1)));
+          n->set_left(Parse(s.substr(0, i)));
+          n->set_right(Parse(s.substr(i + 1)));
           return n;
         }
       }
@@ -36,20 +36,20 @@ int main_2118() {
   };
 
   auto Explode = [&](TNode* l) {
-    auto p = l->p;
-    auto l0 = bst::base::PrevLeaf(p->l), r0 = bst::base::NextLeaf(p->r);
-    if (l0) l0->data += p->l->data;
-    if (r0) r0->data += p->r->data;
-    tree.Release(p->l);
-    tree.Release(p->r);
-    p->SetL(nullptr);
-    p->SetR(nullptr);
+    auto p = l->parent;
+    auto l0 = bst::base::PrevLeaf(p->left), r0 = bst::base::NextLeaf(p->right);
+    if (l0) l0->data += p->left->data;
+    if (r0) r0->data += p->right->data;
+    tree.Release(p->left);
+    tree.Release(p->right);
+    p->set_left(nullptr);
+    p->set_right(nullptr);
     return p;
   };
 
   auto Split = [&](TNode* n) {
-    n->SetL(tree.New(n->data / 2));
-    n->SetR(tree.New((n->data + 1) / 2));
+    n->set_left(tree.New(n->data / 2));
+    n->set_right(tree.New((n->data + 1) / 2));
     n->data = 0;
   };
 
@@ -70,7 +70,8 @@ int main_2118() {
   };
 
   std::function<int64_t(TNode*)> Mag = [&](TNode* node) -> int64_t {
-    return (node->l) ? 3 * Mag(node->l) + 2 * Mag(node->r) : node->data;
+    return (node->left) ? 3 * Mag(node->left) + 2 * Mag(node->right)
+                        : node->data;
   };
 
   auto vs = nvector::ReadLines();
@@ -78,8 +79,8 @@ int main_2118() {
     auto n = Parse(s);
     if (root) {
       auto new_root = tree.New(0);
-      new_root->SetL(root);
-      new_root->SetR(n);
+      new_root->set_left(root);
+      new_root->set_right(n);
       root = new_root;
       Compress();
     } else {
@@ -92,10 +93,10 @@ int main_2118() {
   for (auto s1 : vs) {
     for (auto s2 : vs) {
       if (s1 == s2) continue;
-      tree.ReleaseTree(root->l);
-      tree.ReleaseTree(root->r);
-      root->SetL(Parse(s1));
-      root->SetR(Parse(s2));
+      tree.ReleaseTree(root->left);
+      tree.ReleaseTree(root->right);
+      root->set_left(Parse(s1));
+      root->set_right(Parse(s2));
       Compress();
       auto m = Mag(root);
       r = max(r, m);
