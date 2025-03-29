@@ -37,7 +37,8 @@ int main_2118() {
 
   auto Explode = [&](TNode* l) {
     auto p = l->parent;
-    auto l0 = bst::base::PrevLeaf(p->left), r0 = bst::base::next_leaf(p->right);
+    auto l0 = bst::base::prev_leaf(p->left),
+         r0 = bst::base::next_leaf(p->right);
     if (l0) l0->data += p->left->data;
     if (r0) r0->data += p->right->data;
     tree.Release(p->left);
