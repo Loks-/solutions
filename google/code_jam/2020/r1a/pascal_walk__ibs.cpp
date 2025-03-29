@@ -23,12 +23,18 @@ int main_pascal_walk__ibs() {
     vector<VIBS> v;
     v.reserve(35);
     IBS empty;
-    v.push_back(VIBS(1, IBS(tree)));
+    // v.push_back(VIBS(1, IBS(tree)));
+    v.push_back({});
+    v.back().push_back({});
     v[0][0].Insert(1);
     bool found = false;
     unsigned fn = 0, fk = 0;
     for (unsigned n = 1; !found; ++n) {
-      v.push_back(VIBS(n + 1, IBS(tree)));
+      // v.push_back(VIBS(n + 1, IBS(tree)));
+      v.push_back({});
+      for (unsigned k = 0; k <= n; ++k) {
+        v.back().push_back({});
+      }
       auto& vp = v[v.size() - 2];
       auto& vc = v[v.size() - 1];
       for (unsigned k = 0; k <= n; ++k) {
