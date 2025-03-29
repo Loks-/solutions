@@ -1,6 +1,5 @@
 // https://www.hackerrank.com/challenges/median
 
-#include "common/binary_search_tree/base/find_by_key.h"
 #include "common/binary_search_tree/perfect_tree.h"
 #include "common/binary_search_tree/subtree_data/size.h"
 #include "common/binary_search_tree/subtree_data/sum.h"
