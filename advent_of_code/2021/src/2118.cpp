@@ -41,8 +41,8 @@ int main_2118() {
          r0 = bst::base::next_leaf(p->right);
     if (l0) l0->data += p->left->data;
     if (r0) r0->data += p->right->data;
-    tree.Release(p->left);
-    tree.Release(p->right);
+    tree.release(p->left);
+    tree.release(p->right);
     p->set_left(nullptr);
     p->set_right(nullptr);
     return p;

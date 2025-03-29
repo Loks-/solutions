@@ -58,7 +58,7 @@ int main_fair_fight() {
       total += int64_t(i - l1) * (r1 - i);
       total -= int64_t(i - l2) * (r2 - i);
       for (unsigned j = 0; j < 2; ++j) {
-        TNode* p = tree.NodeByRawIndex(i + j * n);
+        TNode* p = tree.at(i + j * n);
         vh[2 * j + 1] = tree.RemoveByNode(p);
         vh[2 * j] = tree.InsertByKey(vh[2 * j], p);
       }

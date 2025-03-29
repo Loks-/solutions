@@ -22,11 +22,11 @@ int main_reversort() {
     for (unsigned i = 0; i < N; ++i) tree.New();
     auto vu = nvector::Read<unsigned>(N);
     std::vector<TNode*> vn;
-    for (unsigned u : vu) vn.push_back(tree.NodeByRawIndex(u - 1));
+    for (unsigned u : vu) vn.push_back(tree.at(u - 1));
     auto r = tree.BuildTree(vn);
     uint64_t c = 0;
     for (unsigned i = 0; i < N - 1; ++i) {
-      auto node = tree.NodeByRawIndex(i);
+      auto node = tree.at(i);
       bst::deferred::propagate_to_node(node);
       auto position = bst::base::index(node);
       c += position - i + 1;
