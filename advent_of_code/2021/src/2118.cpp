@@ -58,7 +58,7 @@ int main_2118() {
     for (bool b = true; b;) {
       b = false;
       for (auto n = bst::base::left(root); n; n = bst::base::next_leaf(n)) {
-        if (bst::base::Deep(n) > 5) n = Explode(n);
+        if (bst::base::deep(n) > 5) n = Explode(n);
       }
       for (auto n = bst::base::left(root); n; n = bst::base::next_leaf(n)) {
         if (n->data > 9) {
