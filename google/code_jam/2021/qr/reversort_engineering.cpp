@@ -1,4 +1,4 @@
-#include "common/binary_search_tree/base/traversal.h"
+#include "common/binary_search_tree/base/to_vector.h"
 #include "common/binary_search_tree/deferred/reverse.h"
 #include "common/binary_search_tree/subtree_data/size.h"
 #include "common/binary_search_tree/treap.h"
@@ -42,8 +42,7 @@ int main_reversort_engineering() {
       };
 
       auto r = Solve(N, C);
-      auto v = bst::base::Traverse<TNode, TNode::DataType>(
-          r, bst::base::ETraversalOrder::Inorder);
+      auto v = bst::base::to_vector(r);
       std::reverse(v.begin(), v.end());
       cout << "Case #" << it + 1 << ":";
       for (unsigned u : v) std::cout << " " << u;

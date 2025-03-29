@@ -1,6 +1,6 @@
 // https://www.hackerrank.com/challenges/array-and-simple-queries
 
-#include "common/binary_search_tree/base/traversal.h"
+#include "common/binary_search_tree/base/to_vector.h"
 #include "common/binary_search_tree/splay_tree.h"
 #include "common/binary_search_tree/utils/swap_intervals.h"
 #include "common/stl/base.h"
@@ -24,8 +24,7 @@ int main_array_and_simple_queries__splay() {
     else
       bst::SwapIntervals<TSplayTree>(root, i - 1, j, N);
   }
-  vector<int> vf = bst::base::Traverse<TNode, int>(
-      root, bst::base::ETraversalOrder::Inorder);
+  vector<int> vf = bst::base::to_vector(root);
   cout << abs(vf[0] - vf.back()) << endl;
   nvector::Write(vf);
   return 0;

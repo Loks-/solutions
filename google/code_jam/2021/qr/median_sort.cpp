@@ -1,4 +1,4 @@
-#include "common/binary_search_tree/base/traversal.h"
+#include "common/binary_search_tree/base/to_vector.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/stl/base.h"
 #include "common/vector/write.h"
@@ -40,9 +40,7 @@ int main_median_sort() {
       }
       root = tree.InsertNewNodeByOrder(root, i, l);
     }
-    auto v = bst::base::Traverse<TNode, TNode::DataType>(
-        root, bst::base::ETraversalOrder::Inorder);
-    nvector::Write(v);
+    nvector::Write(bst::base::to_vector(root));
     cin >> jr;
     if (jr != 1) return -2;
   }
