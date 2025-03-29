@@ -1,4 +1,4 @@
-#include "common/binary_search_tree/base/inorder_index.h"
+#include "common/binary_search_tree/base/index.h"
 #include "common/binary_search_tree/deferred/reverse.h"
 #include "common/binary_search_tree/deferred/utils/propagate_to_node.h"
 #include "common/binary_search_tree/subtree_data/size.h"
@@ -28,7 +28,7 @@ int main_reversort() {
     for (unsigned i = 0; i < N - 1; ++i) {
       auto node = tree.NodeByRawIndex(i);
       bst::deferred::propagate_to_node(node);
-      auto position = bst::base::inorder_index(node);
+      auto position = bst::base::index(node);
       c += position - i + 1;
       r = bst::AddActionToSegmentByIndex<bst::deferred::Reverse, TTree>(
           r, i, position + 1, MetaEmpty{});
