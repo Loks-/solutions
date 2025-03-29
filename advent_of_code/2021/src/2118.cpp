@@ -37,7 +37,7 @@ int main_2118() {
 
   auto Explode = [&](TNode* l) {
     auto p = l->parent;
-    auto l0 = bst::base::PrevLeaf(p->left), r0 = bst::base::NextLeaf(p->right);
+    auto l0 = bst::base::PrevLeaf(p->left), r0 = bst::base::next_leaf(p->right);
     if (l0) l0->data += p->left->data;
     if (r0) r0->data += p->right->data;
     tree.Release(p->left);
@@ -56,10 +56,10 @@ int main_2118() {
   auto Compress = [&]() {
     for (bool b = true; b;) {
       b = false;
-      for (auto n = bst::base::left(root); n; n = bst::base::NextLeaf(n)) {
+      for (auto n = bst::base::left(root); n; n = bst::base::next_leaf(n)) {
         if (bst::base::Deep(n) > 5) n = Explode(n);
       }
-      for (auto n = bst::base::left(root); n; n = bst::base::NextLeaf(n)) {
+      for (auto n = bst::base::left(root); n; n = bst::base::next_leaf(n)) {
         if (n->data > 9) {
           b = true;
           Split(n);
