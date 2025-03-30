@@ -27,20 +27,20 @@ int main_immunization_operation() {
       unsigned d = 0;
       auto l1 = l0 + m;
       if (root) {
-        tree.SplitByKey(root, min(l0, l1), p1, pt);
-        tree.SplitByKey(pt, max(l0, l1) + 1, p2, p3);
+        tree.split(root, min(l0, l1), p1, pt);
+        tree.split(pt, max(l0, l1) + 1, p2, p3);
         if (p2) {
           d += bst::subtree_data::size(p2);
-          tree.ReleaseTree(p2);
+          tree.release_tree(p2);
         }
-        root = tree.Join(p1, p3);
+        root = tree.join(p1, p3);
       }
       if (l1 > l0) {
         for (; (p < V) && (vvp[p].first <= l1); ++p) {
           if ((vvp[p].second >= vvp[p].first) && (vvp[p].second <= l1)) {
             ++d;
           } else {
-            root = tree.InsertNewNode(root, {}, vvp[p].second);
+            root = tree.insert_new(root, {}, vvp[p].second);
           }
         }
       }
@@ -48,7 +48,7 @@ int main_immunization_operation() {
       cout << " " << d;
     }
     cout << endl;
-    tree.ReleaseTree(root);
+    tree.release_tree(root);
   }
   return 0;
 }

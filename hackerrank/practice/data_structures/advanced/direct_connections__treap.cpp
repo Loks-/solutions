@@ -27,7 +27,7 @@ int main_direct_connections__treap() {
     ModularDefault total = 0;
     TNode *root = 0, *l, *r;
     for (auto px : vpx) {
-      tree.SplitByKey(root, px.second, l, r);
+      tree.split(root, px.second, l, r);
       ModularDefault s = 0;
       if (l)
         s += ModularDefault(bst::subtree_data::size(l) * px.second -
@@ -36,10 +36,10 @@ int main_direct_connections__treap() {
         s += ModularDefault(TSumKeys::get(r) -
                             bst::subtree_data::size(r) * px.second);
       total += s * ModularDefault(px.first);
-      TNode* m = tree.New({}, px.second);
-      root = tree.Join(tree.Join(l, m), r);
+      TNode* m = tree.create_node({}, px.second);
+      root = tree.join(tree.join(l, m), r);
     }
-    tree.ReleaseTree(root);
+    tree.release_tree(root);
     cout << total << endl;
   }
   return 0;

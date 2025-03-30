@@ -61,11 +61,11 @@ int main_pancake_pyramid() {
     TTree tree(S);
     vector<TNode*> vn;
     for (unsigned p : vs) {
-      TNode* node = tree.New({});
+      TNode* node = tree.create_node({});
       bst::subtree_data::TreapHeight::set(node, p);
       vn.push_back(node);
     }
-    TNode* head = TTree::BuildTree(vn);
+    TNode* head = TTree::build_tree(vn);
     cout << "Case #" << iT << ": " << head->subtree_data.template get<PInfo>().s
          << endl;
   }

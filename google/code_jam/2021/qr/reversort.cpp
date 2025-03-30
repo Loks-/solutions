@@ -19,11 +19,11 @@ int main_reversort() {
   for (unsigned it = 0; it < T; ++it) {
     cin >> N;
     TTree tree(N);
-    for (unsigned i = 0; i < N; ++i) tree.New();
+    for (unsigned i = 0; i < N; ++i) tree.create_node({});
     auto vu = nvector::Read<unsigned>(N);
     std::vector<TNode*> vn;
     for (unsigned u : vu) vn.push_back(tree.manager_at(u - 1));
-    auto r = tree.BuildTree(vn);
+    auto r = tree.build_tree(vn);
     uint64_t c = 0;
     for (unsigned i = 0; i < N - 1; ++i) {
       auto node = tree.manager_at(i);

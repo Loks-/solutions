@@ -26,7 +26,7 @@ int main_evolutionary_algorithms__treap() {
     vector<TNode *> vn(N);
     queue<unsigned> q;
     for (unsigned i = 0; i < N; ++i) {
-      vn[i] = tree.New({}, vs[i] * N + i);
+      vn[i] = tree.create_node({}, vs[i] * N + i);
       if (vc[i] == 0) q.push(i);
     }
     for (; !q.empty(); q.pop()) {
@@ -36,10 +36,10 @@ int main_evolutionary_algorithms__treap() {
         auto s1 = (s - 1) / K;
         uint64_t tt = upper_bound(vss.begin(), vss.end(), s1) - vss.begin();
         if (tt > 1) {
-          TTree::SplitByKey(vn[i], (s1 + 1) * N, p1, p2);
+          TTree::split(vn[i], (s1 + 1) * N, p1, p2);
           uint64_t tc = bst::subtree_data::size(p1);
           r += tc * (tt - tc);
-          vn[i] = TTree::Join(p1, p2);
+          vn[i] = TTree::join(p1, p2);
         }
       }
       if (i > 0) {
@@ -50,7 +50,7 @@ int main_evolutionary_algorithms__treap() {
       }
     }
     cout << "Case #" << it << ": " << r << endl;
-    tree.ReleaseTree(vn[0]);
+    tree.release_tree(vn[0]);
   }
   return 0;
 }

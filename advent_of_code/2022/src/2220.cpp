@@ -14,8 +14,9 @@ int main_2220() {
     int64_t n = v.size();
     TTree tree(v.size());
     vector<TNode *> nodes;
-    for (auto x : v) nodes.push_back(tree.New(x * (ab ? 811589153 : 1)));
-    auto root = tree.BuildTree(nodes);
+    for (auto x : v)
+      nodes.push_back(tree.create_node(x * (ab ? 811589153 : 1)));
+    auto root = tree.build_tree(nodes);
     for (unsigned itt = 0; itt < (ab ? 10 : 1); ++itt) {
       for (auto node : nodes) {
         auto p = bst::base::index(node);
@@ -30,7 +31,7 @@ int main_2220() {
     }
     int64_t p = bst::base::index(p0), r = 0;
     for (int64_t i = 1; i <= 3; ++i)
-      r += tree.FindByOrder(root, (p + i * 1000) % n)->data;
+      r += tree.at(root, (p + i * 1000) % n)->data;
     cout << r << endl;
   }
   return 0;

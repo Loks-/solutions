@@ -15,10 +15,10 @@ int main_largest_rectangle() {
   vector<TNode*> vnodes(N);
   for (unsigned i = 0; i < N; ++i) {
     cin >> h;
-    vnodes[i] = tree.New();
+    vnodes[i] = tree.create_node({});
     bst::subtree_data::TreapHeight::set(vnodes[i], ~h);
   }
-  tree.BuildTree(vnodes);
+  tree.build_tree(vnodes);
   uint64_t output = 0;
   for (TNode* p : vnodes)
     output = max(output, unsigned(~bst::subtree_data::TreapHeight::get(p)) *

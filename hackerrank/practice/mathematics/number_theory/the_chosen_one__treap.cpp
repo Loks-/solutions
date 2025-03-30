@@ -18,7 +18,7 @@ int main_the_chosen_one__treap() {
     return 0;
   }
   TTreap treap(n);
-  TNode* root = treap.Build(v);
+  TNode* root = treap.build_from_data(v);
   for (unsigned i = 0; i < n; ++i) {
     TNode* node = treap.manager_at(i);
     uint64_t value = node->data;

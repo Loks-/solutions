@@ -21,14 +21,14 @@ int main_median_updates__upf_treap() {
     cin >> c >> x;
     x *= 2;
     if (c == 'a') {
-      root = tree.InsertNewNode(root, {}, x);
+      root = tree.insert_new(root, {}, x);
     } else if (c == 'r') {
-      TNode* node = TTree::FindByKey(root, x);
+      TNode* node = TTree::find(root, x);
       if (node == 0) {
         cout << "Wrong!" << endl;
         continue;
       }
-      root = tree.RemoveAndReleaseByKey(root, x);
+      root = tree.remove_and_release(root, x);
     }
     if (root == 0) {
       cout << "Wrong!" << endl;

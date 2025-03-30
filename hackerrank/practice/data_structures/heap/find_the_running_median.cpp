@@ -18,7 +18,7 @@ int main_find_the_running_median() {
   for (unsigned i = 0; i < N; ++i) {
     int64_t x;
     cin >> x;
-    root = tree.InsertNewNode(root, {}, x);
+    root = tree.insert_new(root, {}, x);
     cout << bst::Median<TNode, double>(root) << endl;
   }
   return 0;

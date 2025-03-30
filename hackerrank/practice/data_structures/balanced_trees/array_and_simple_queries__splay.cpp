@@ -15,7 +15,7 @@ int main_array_and_simple_queries__splay() {
   cin >> N >> M;
   vector<int> va = nvector::Read<int>(N);
   TSplayTree splay_tree(N);
-  TNode* root = splay_tree.Build(va);
+  TNode* root = splay_tree.build_from_data(va);
   for (; M; --M) {
     unsigned t, i, j;
     cin >> t >> i >> j;

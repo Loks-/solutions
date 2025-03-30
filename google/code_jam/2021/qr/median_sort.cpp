@@ -12,7 +12,7 @@ int main_median_sort() {
   assert(N > 1);
   for (unsigned it = 0; it < T; ++it) {
     TTree tree(N);
-    auto root = tree.Join(tree.New(1u), tree.New(2u));
+    auto root = tree.join(tree.create_node(1u), tree.create_node(2u));
     for (unsigned i = 3; i <= N; ++i) {
       unsigned l = 0, r = i - 1;
       for (; r > l;) {
@@ -23,8 +23,7 @@ int main_median_sort() {
           else
             ++p2;
         }
-        unsigned i1 = TTree::FindByOrder(root, p1)->data,
-                 i2 = TTree::FindByOrder(root, p2)->data;
+        unsigned i1 = TTree::at(root, p1)->data, i2 = TTree::at(root, p2)->data;
         cout << i << " " << i1 << " " << i2 << endl;
         cin >> jr;
         if (jr == i1) {
@@ -38,7 +37,7 @@ int main_median_sort() {
           return -1;
         }
       }
-      root = tree.InsertNewNodeByOrder(root, i, l);
+      root = tree.insert_new_at(root, i, l);
     }
     nvector::Write(bst::base::to_vector(root));
     cin >> jr;

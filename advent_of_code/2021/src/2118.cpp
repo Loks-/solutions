@@ -23,7 +23,7 @@ int main_2118() {
         if (s[i] == '[') ++d;
         if (s[i] == ']') --d;
         if ((s[i] == ',') && (d == 0)) {
-          auto n = tree.New(0);
+          auto n = tree.create_node(0);
           n->set_left(Parse(s.substr(0, i)));
           n->set_right(Parse(s.substr(i + 1)));
           return n;
@@ -31,7 +31,7 @@ int main_2118() {
       }
       return nullptr;
     } else {
-      return tree.New(stoi(ss));
+      return tree.create_node(stoi(ss));
     }
   };
 
@@ -49,8 +49,8 @@ int main_2118() {
   };
 
   auto Split = [&](TNode* n) {
-    n->set_left(tree.New(n->data / 2));
-    n->set_right(tree.New((n->data + 1) / 2));
+    n->set_left(tree.create_node(n->data / 2));
+    n->set_right(tree.create_node((n->data + 1) / 2));
     n->data = 0;
   };
 
@@ -79,7 +79,7 @@ int main_2118() {
   for (auto s : vs) {
     auto n = Parse(s);
     if (root) {
-      auto new_root = tree.New(0);
+      auto new_root = tree.create_node(0);
       new_root->set_left(root);
       new_root->set_right(n);
       root = new_root;
@@ -94,8 +94,8 @@ int main_2118() {
   for (auto s1 : vs) {
     for (auto s2 : vs) {
       if (s1 == s2) continue;
-      tree.ReleaseTree(root->left);
-      tree.ReleaseTree(root->right);
+      tree.release_tree(root->left);
+      tree.release_tree(root->right);
       root->set_left(Parse(s1));
       root->set_right(Parse(s2));
       Compress();

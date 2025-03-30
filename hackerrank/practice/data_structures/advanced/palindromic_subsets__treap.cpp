@@ -90,7 +90,7 @@ int main_palindromic_subsets__treap() {
   vector<TVector> vs(n);
   for (unsigned i = 0; i < n; ++i) vs[i](s[i] - 'a') = 1;
   TTree tree(n);
-  TNode* root = tree.Build(vs);
+  TNode* root = tree.build_from_data(vs);
   for (unsigned i = 0; i < q; ++i) {
     unsigned t, a, b, c;
     cin >> t;
@@ -99,7 +99,7 @@ int main_palindromic_subsets__treap() {
       root = bst::AddActionToSegmentByIndex<TRotate, TTree>(root, a, b + 1, c);
     } else if (t == 2) {
       cin >> a >> b;
-      TTree::TInfo info;
+      TTree::SubtreeDataType info;
       root = bst::GetSegmentInfoByIndex<TTree>(root, a, b + 1, info);
       unsigned nsum = 0, nnonzero = 0;
       for (unsigned j = 0; j < 26; ++j) {

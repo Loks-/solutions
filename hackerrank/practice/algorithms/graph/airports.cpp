@@ -56,13 +56,13 @@ int main_airports() {
     TNode* head = nullptr;
     for (unsigned i = 2; i < n; ++i) {
       if (v[i] < l) {
-        head = tree.InsertNewNode(head, {}, l);
+        head = tree.insert_new(head, {}, l);
         l = v[i];
       } else if (r < v[i]) {
-        head = tree.InsertNewNode(head, {}, r);
+        head = tree.insert_new(head, {}, r);
         r = v[i];
       } else {
-        head = tree.InsertNewNode(head, {}, v[i]);
+        head = tree.insert_new(head, {}, v[i]);
       }
       typename TNode::SubtreeDataType subtree_data;
       head =

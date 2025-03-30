@@ -24,7 +24,7 @@ int main_evolutionary_algorithms__splay() {
     vector<TNode *> vn(N);
     queue<unsigned> q;
     for (unsigned i = 0; i < N; ++i) {
-      vn[i] = tree.New({}, vs[i]);
+      vn[i] = tree.create_node({}, vs[i]);
       if (vc[i] == 0) q.push(i);
     }
     for (; !q.empty(); q.pop()) {
@@ -34,8 +34,8 @@ int main_evolutionary_algorithms__splay() {
         auto s1 = (s - 1) / K;
         uint64_t tt = upper_bound(vss.begin(), vss.end(), s1) - vss.begin();
         if (tt > 1) {
-          auto node = TTree::FindByKeyLess(vn[i], s1 + 1);
-          uint64_t tc = (node ? TTree::Order(node) + 1 : size_t(0));
+          auto node = TTree::floor(vn[i], s1 + 1);
+          uint64_t tc = (node ? TTree::index(node) + 1 : size_t(0));
           r += tc * (tt - tc);
         }
       }
@@ -47,7 +47,7 @@ int main_evolutionary_algorithms__splay() {
       }
     }
     cout << "Case #" << it << ": " << r << endl;
-    tree.ReleaseTree(vn[0]);
+    tree.release_tree(vn[0]);
   }
   return 0;
 }

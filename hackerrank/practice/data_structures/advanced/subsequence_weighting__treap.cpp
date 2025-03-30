@@ -20,12 +20,12 @@ int main_subsequence_weighting__treap() {
                      vw = nvector::Read<uint64_t>(N);
     TNode *root = 0, *l, *r;
     for (unsigned i = 0; i < N; ++i) {
-      tree.SplitByKey(root, va[i], l, r);
-      TNode* m = tree.New(vw[i] + (l ? TMax::get(l) : 0), va[i]);
-      root = tree.Join(tree.Join(l, m), r);
+      tree.split(root, va[i], l, r);
+      TNode* m = tree.create_node(vw[i] + (l ? TMax::get(l) : 0), va[i]);
+      root = tree.join(tree.join(l, m), r);
     }
     cout << TMax::get(root) << endl;
-    tree.ReleaseTree(root);
+    tree.release_tree(root);
   }
   return 0;
 }

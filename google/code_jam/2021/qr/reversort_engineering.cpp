@@ -25,7 +25,7 @@ int main_reversort_engineering() {
 
       std::function<TNode*(unsigned, unsigned)> Solve =
           [&](unsigned n, unsigned c) -> TNode* {
-        auto node = tree.New(N - n + 1);
+        auto node = tree.create_node(N - n + 1);
         if (n == 1) {
           assert(c == 1);
           return node;
@@ -33,10 +33,10 @@ int main_reversort_engineering() {
           if (c >= 2 * n - 1) {
             auto r = Solve(n - 1, c - n);
             bst::deferred::reverse_subtree(r);
-            return tree.Join(node, r);
+            return tree.join(node, r);
           } else {
             auto r = Solve(n - 1, c - 1);
-            return tree.Join(r, node);
+            return tree.join(r, node);
           }
         }
       };
