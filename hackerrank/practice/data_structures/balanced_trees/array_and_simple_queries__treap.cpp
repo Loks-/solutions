@@ -15,7 +15,7 @@ int main_array_and_simple_queries__treap() {
   cin >> N >> M;
   vector<int> va = nvector::Read<int>(N);
   TTreap treap(N);
-  TNode* root = treap.build_from_data(va);
+  TNode* root = treap.build(va);
   for (; M; --M) {
     unsigned t, i, j;
     cin >> t >> i >> j;

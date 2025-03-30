@@ -31,7 +31,7 @@ int main_median_updates__fixed_tree() {
   }
   vector<int64_t> vx(set_x.begin(), set_x.end());
   TTree tree(unsigned(vx.size()));
-  TNode* root = tree.build_from_data(vector<unsigned>(vx.size(), 0), vx);
+  TNode* root = tree.build(vector<unsigned>(vx.size(), 0), vx);
 
   for (auto p : input) {
     TNode* node = TTree::find(root, p.second);

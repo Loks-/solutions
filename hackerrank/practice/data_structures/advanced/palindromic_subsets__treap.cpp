@@ -90,7 +90,7 @@ int main_palindromic_subsets__treap() {
   vector<TVector> vs(n);
   for (unsigned i = 0; i < n; ++i) vs[i](s[i] - 'a') = 1;
   TTree tree(n);
-  TNode* root = tree.build_from_data(vs);
+  TNode* root = tree.build(vs);
   for (unsigned i = 0; i < q; ++i) {
     unsigned t, a, b, c;
     cin >> t;
