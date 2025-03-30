@@ -20,7 +20,7 @@ int main_the_chosen_one__treap() {
   TTreap treap(n);
   TNode* root = treap.Build(v);
   for (unsigned i = 0; i < n; ++i) {
-    TNode* node = treap.at(i);
+    TNode* node = treap.manager_at(i);
     uint64_t value = node->data;
     node->data = 0;
     bst::subtree_data::propagate_to_root(node);
