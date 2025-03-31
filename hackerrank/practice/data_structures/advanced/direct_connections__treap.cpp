@@ -11,7 +11,7 @@ using TSumKeys = bst::subtree_data::SumKeys<uint64_t>;
 using TSize = bst::subtree_data::Size;
 using TTree = bst::Treap<true, false, MetaEmpty, std::tuple<TSumKeys, TSize>,
                          std::tuple<>, uint64_t>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_direct_connections__treap() {
   unsigned T, N;

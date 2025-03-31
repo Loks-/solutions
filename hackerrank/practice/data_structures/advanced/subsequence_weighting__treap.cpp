@@ -8,7 +8,7 @@
 using TMax = bst::subtree_data::Max<uint64_t>;
 using TTree =
     bst::Treap<true, false, uint64_t, std::tuple<TMax>, std::tuple<>, uint64_t>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_subsequence_weighting__treap() {
   unsigned T, N;

@@ -6,7 +6,7 @@
 #include "common/stl/base.h"
 
 using TTreap = bst::Treap<false, false, MetaEmpty>;
-using TNode = TTreap::TNode;
+using TNode = TTreap::NodeType;
 
 int main_largest_rectangle() {
   unsigned N, h;

@@ -6,7 +6,7 @@
 #include <queue>
 
 using TTree = bst::Treap<true, false, MetaEmpty>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_evolutionary_algorithms__treap() {
   unsigned T, N, K;

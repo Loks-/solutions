@@ -8,7 +8,7 @@
 #include "common/vector/write.h"
 
 using TTreap = bst::Treap<false, false, int>;
-using TNode = TTreap::TNode;
+using TNode = TTreap::NodeType;
 
 int main_array_and_simple_queries__treap() {
   unsigned N, M;

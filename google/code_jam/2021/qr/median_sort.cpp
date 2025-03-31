@@ -5,7 +5,7 @@
 #include "common/vector/write.h"
 
 using TTree = bst::Treap<false, true, unsigned>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_median_sort() {
   unsigned T, N, Q, jr;

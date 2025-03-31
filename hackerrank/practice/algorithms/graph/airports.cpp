@@ -40,7 +40,7 @@ class PSubtreeData : public bst::subtree_data::Base {
 
 using TTree = bst::Treap<true, false, MetaEmpty,
                          std::tuple<bst::subtree_data::Size, PSubtreeData>>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_airports() {
   unsigned T;

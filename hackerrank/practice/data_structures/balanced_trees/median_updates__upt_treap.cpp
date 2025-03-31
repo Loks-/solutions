@@ -8,7 +8,7 @@
 #include <iomanip>
 
 using TTree = bst::Treap<true, true, MetaEmpty>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_median_updates__upt_treap() {
   cout << setprecision(1) << fixed;

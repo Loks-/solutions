@@ -80,7 +80,7 @@ constexpr void rotate_external(Node* node, unsigned r) {
 using TTree =
     bst::Treap<false, false, TVector, std::tuple<bst::subtree_data::Size, TSum>,
                std::tuple<TRotate>>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_palindromic_subsets__treap() {
   unsigned n, q;

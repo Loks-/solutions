@@ -9,7 +9,7 @@
 using TTree =
     bst::Treap<false, true, unsigned, std::tuple<bst::subtree_data::Size>,
                std::tuple<bst::deferred::Reverse>>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_reversort_engineering() {
   unsigned T, N, C;

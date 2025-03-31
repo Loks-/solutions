@@ -50,7 +50,7 @@ class PInfo : public bst::subtree_data::Base {
 
 using TTree = bst::Treap<false, false, MetaEmpty,
                          std::tuple<bst::subtree_data::Size, PInfo>>;
-using TNode = typename TTree::TNode;
+using TNode = typename TTree::NodeType;
 
 int main_pancake_pyramid() {
   unsigned T, S;

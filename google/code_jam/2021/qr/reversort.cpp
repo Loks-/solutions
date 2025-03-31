@@ -11,7 +11,7 @@
 using TTree =
     bst::Treap<false, true, MetaEmpty, std::tuple<bst::subtree_data::Size>,
                std::tuple<bst::deferred::Reverse>>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_reversort() {
   unsigned T, N;

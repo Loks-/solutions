@@ -7,7 +7,7 @@
 
 using TGCD = bst::subtree_data::GCD<uint64_t>;
 using TTreap = bst::Treap<false, true, uint64_t, std::tuple<TGCD>>;
-using TNode = TTreap::TNode;
+using TNode = TTreap::NodeType;
 
 int main_the_chosen_one__treap() {
   unsigned n;
