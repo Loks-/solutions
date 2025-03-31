@@ -8,7 +8,7 @@
 #include "common/vector/write.h"
 
 using TSplayTree = bst::SplayTree<false, int>;
-using TNode = TSplayTree::TNode;
+using TNode = TSplayTree::NodeType;
 
 int main_array_and_simple_queries__splay() {
   unsigned N, M;

@@ -4,7 +4,7 @@
 #include "common/vector/read.h"
 
 using TTree = bst::SplayTree<true, MetaEmpty>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_immunization_operation() {
   unsigned T, V, M;

@@ -7,7 +7,7 @@
 #include <iomanip>
 
 using TTree = bst::SplayTree<true, MetaEmpty>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_median_updates__upt_splay() {
   cout << setprecision(1) << fixed;
