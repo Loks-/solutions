@@ -44,7 +44,7 @@ int main_evolutionary_algorithms__treap() {
       }
       if (i > 0) {
         unsigned j = vp[i - 1] - 1;
-        vn[j] = TTree::Union(vn[j], vn[i]);
+        vn[j] = TTree::merge(vn[j], vn[i]);
         vc[j] -= 1;
         if (vc[j] == 0) q.push(j);
       }

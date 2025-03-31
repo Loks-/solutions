@@ -1,3 +1,4 @@
+#include "common/binary_search_tree/base/at.h"
 #include "common/binary_search_tree/base/index.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/binary_search_tree/utils/swap_intervals.h"
@@ -6,7 +7,7 @@
 #include "common/vector/read_all.h"
 
 using TTree = bst::Treap<false, true, int64_t>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_2220() {
   auto v = nvector::ReadAll<int64_t>();
@@ -31,7 +32,7 @@ int main_2220() {
     }
     int64_t p = bst::base::index(p0), r = 0;
     for (int64_t i = 1; i <= 3; ++i)
-      r += tree.at(root, (p + i * 1000) % n)->data;
+      r += bst::base::at(root, (p + i * 1000) % n)->data;
     cout << r << endl;
   }
   return 0;

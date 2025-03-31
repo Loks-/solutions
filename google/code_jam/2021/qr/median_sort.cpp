@@ -1,3 +1,4 @@
+#include "common/binary_search_tree/base/at.h"
 #include "common/binary_search_tree/base/to_vector.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/stl/base.h"
@@ -23,7 +24,8 @@ int main_median_sort() {
           else
             ++p2;
         }
-        unsigned i1 = TTree::at(root, p1)->data, i2 = TTree::at(root, p2)->data;
+        unsigned i1 = bst::base::at(root, p1)->data,
+                 i2 = bst::base::at(root, p2)->data;
         cout << i << " " << i1 << " " << i2 << endl;
         cin >> jr;
         if (jr == i1) {

@@ -1,5 +1,6 @@
 // https://www.hackerrank.com/challenges/median
 
+#include "common/binary_search_tree/base/find.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/binary_search_tree/utils/median.h"
 #include "common/stl/base.h"
@@ -23,8 +24,8 @@ int main_median_updates__upt_treap() {
     if (c == 'a') {
       root = tree.insert_new(root, {}, x);
     } else if (c == 'r') {
-      TNode* node = TTree::find(root, x);
-      if (node == 0) {
+      TNode* node = bst::base::find(root, x);
+      if (!node) {
         cout << "Wrong!" << endl;
         continue;
       }
