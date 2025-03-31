@@ -1,6 +1,7 @@
 // https://www.hackerrank.com/challenges/median
 
-#include "common/binary_search_tree/perfect_tree.h"
+#include "common/binary_search_tree/base/find.h"
+#include "common/binary_search_tree/static_tree.h"
 #include "common/binary_search_tree/subtree_data/size.h"
 #include "common/binary_search_tree/subtree_data/sum.h"
 #include "common/binary_search_tree/subtree_data/utils/propagate_to_root.h"
@@ -12,8 +13,8 @@
 
 using TSum = bst::subtree_data::Sum<unsigned>;
 using TTree =
-    bst::PerfectTree<true, unsigned, std::tuple<bst::subtree_data::Size, TSum>>;
-using TNode = TTree::TNode;
+    bst::StaticTree<true, unsigned, std::tuple<bst::subtree_data::Size, TSum>>;
+using TNode = TTree::NodeType;
 
 int main_median_updates__fixed_tree() {
   cout << setprecision(1) << fixed;
@@ -34,7 +35,7 @@ int main_median_updates__fixed_tree() {
   TNode* root = tree.build(vector<unsigned>(vx.size(), 0), vx);
 
   for (auto p : input) {
-    TNode* node = TTree::find(root, p.second);
+    TNode* node = bst::base::find(root, p.second);
     assert(node);
     if (p.first == 'a') {
       node->data += 1;
