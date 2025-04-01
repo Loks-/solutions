@@ -1,14 +1,16 @@
 #include "common/linear_algebra/matrix.h"
 #include "common/modular_io.h"
 #include "common/stl/base.h"
-#include "common/vector/shuffle.h"
 
+#include <random>
 #include <unordered_map>
 
 using TMatrix = la::Matrix<ModularDefault>;
 
 int main_name_preserving_network() {
-  auto generate_random_graph = [](unsigned n) {
+  std::default_random_engine re(17);
+
+  auto generate_random_graph = [&re](unsigned n) {
     vector<unsigned> v(4 * n);
     for (unsigned i = 0; i < 4 * n; ++i) v[i] = i / 4;
     TMatrix m(n, n);
@@ -16,7 +18,7 @@ int main_name_preserving_network() {
       next_try = false;
       m.Clear();
       m.SetDiagonal(1);
-      nvector::Shuffle(v);
+      std::shuffle(v.begin(), v.end(), re);
       for (unsigned i = 0; i < 4 * n; i += 2) {
         bool found = false;
         for (unsigned j = i + 1; j < 4 * n; ++j) {
@@ -41,10 +43,10 @@ int main_name_preserving_network() {
   for (unsigned it = 1; it <= T; ++it) {
     unsigned N, N2;
     cin >> N >> N2;
-    unsigned trun = 0, k;
+    unsigned k = 0;
     unordered_map<uint64_t, unsigned> um;
     TMatrix mg(0);
-    for (bool next_try = true; next_try; ++trun) {
+    for (bool next_try = true; next_try;) {
       auto m = generate_random_graph(N);
       mg = m;
       for (k = 0; k < 20; ++k) {
