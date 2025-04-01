@@ -19,8 +19,8 @@ class FInfo : public ds::st::info::None {
   using TBase = ds::st::info::None;
   using TSelf = FInfo;
 
-  static const bool is_none = false;
-  static const bool use_data = true;
+  [[maybe_unused]] static const bool is_none = false;
+  [[maybe_unused]] static const bool use_data = true;
 
   FData f;
 
@@ -41,7 +41,7 @@ class FInfo : public ds::st::info::None {
 
 class FActionSet : public ds::st::action::None {
  public:
-  static const bool modify_data = true;
+  [[maybe_unused]] static const bool modify_data = true;
 
   bool empty;
   FData f;

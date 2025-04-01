@@ -9,10 +9,9 @@ int main_saving_the_universe_again() {
     uint64_t d, dc = 0, cc = 1, one = 1;
     string s;
     cin >> d >> s;
-    unsigned nc = 0, ns = 0;
+    unsigned ns = 0;
     for (char c : s) {
       if (c == 'C') {
-        ++nc;
         cc *= 2;
       } else if (c == 'S') {
         ++ns;

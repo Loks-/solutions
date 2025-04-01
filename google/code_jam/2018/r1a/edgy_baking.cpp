@@ -57,13 +57,11 @@ int main_edgy_baking() {
     cin >> N >> P;
     vector<pair<unsigned, double>> v(N);
     unsigned mHW = 500;
-    double total_extra = 0.;
     for (unsigned i = 0; i < N; ++i) {
       cin >> W >> H;
       P0 += 2 * (H + W);
       v[i] = make_pair(2 * min(H, W), 2.0 * sqrt(1.0 * (H * H + W * W)));
       mHW = min(mHW, v[i].first);
-      total_extra += v[i].second;
     }
     sort(v.begin(), v.end());
     IS iset(P - P0);

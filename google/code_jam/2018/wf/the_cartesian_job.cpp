@@ -81,15 +81,12 @@ int main_the_cartesian_job() {
       rcurrent = max(rcurrent, vpu[i].second);
       vl1[i + 1] = rcurrent;
     }
-    double s0 = 0., s1 = 0.;
+    double s1 = 0.;
     vector<unordered_map<unsigned, double>> vtasks(vpu.size() + 1);
     vtasks[0][0] = 1.0;
     for (unsigned i = 0; i < vpu.size(); ++i) {
       for (auto p : vtasks[i]) {
-        if (p.first >= l) {
-          s0 += p.second;
-          continue;
-        }
+        if (p.first >= l) continue;
         unsigned j = i;
         for (; (j < vpu.size()) && (vpu[j].second <= p.first);) ++j;
         if ((j == vpu.size()) || (vpu[j].first > p.first)) {
@@ -102,10 +99,7 @@ int main_the_cartesian_job() {
       vtasks[i] = unordered_map<unsigned, double>();
     }
     for (auto p : vtasks[vpu.size()]) {
-      if (p.first >= l)
-        s0 += p.second;
-      else
-        s1 += p.second;
+      if (p.first < l) s1 += p.second;
     }
     cout << "Case #" << it << ": " << s1 << endl;
   }

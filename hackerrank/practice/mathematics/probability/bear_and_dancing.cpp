@@ -18,7 +18,7 @@ int main_bear_and_dancing() {
   cin >> n >> m >> r;
   if (n > m) swap(n, m);
   double sbp = 0, sbpd = 0;
-  double sfp = 0, sfpd = 0;
+  double sfpd = 0;
   unsigned maxl = n * (m - 1) + 1;
   vector<vector<Status>> vlast(n, vector<Status>(m)), vcurrent = vlast;
   {
@@ -26,10 +26,7 @@ int main_bear_and_dancing() {
     Status& s = vlast[n - 1][m - 1];
     s.p = 1.0;
     s.ed = 1.0;
-    if (m == 1) {
-      sfp += 1.0;
-      sfpd += 1.0;
-    }
+    if (m == 1) sfpd += 1.0;
   }
   for (unsigned l = 1; l < maxl; ++l) {
     for (unsigned in = 0; in < n; ++in) {
@@ -79,7 +76,6 @@ int main_bear_and_dancing() {
         }
       }
     }
-    sfp += vcurrent[0][0].p;
     sfpd += vcurrent[0][0].ed;
     vlast.swap(vcurrent);
   }

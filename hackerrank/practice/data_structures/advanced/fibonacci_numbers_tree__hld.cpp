@@ -24,7 +24,7 @@ class FData {
 class ActionAdd : public ds::st::action::None {
  public:
   using TData = std::pair<ModularDefault, ModularDefault>;
-  static const bool modify_data = true;
+  [[maybe_unused]] static const bool modify_data = true;
 
   TData x;
 

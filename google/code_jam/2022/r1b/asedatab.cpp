@@ -51,7 +51,7 @@ int main_asedatab() {
     for (unsigned u = 0; u < M; ++u) {
       if (vu[u] == u) vc0.push_back(u);
     }
-    for (unsigned step = 0;; ++step) {
+    while (true) {
       unsigned best = M;
       for (unsigned u : vc0) {
         if (vs[u] < best) {

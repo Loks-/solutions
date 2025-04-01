@@ -11,7 +11,7 @@ class PInfo : public bst::subtree_data::Base {
  public:
   using Self = PInfo;
 
-  static constexpr bool use_data = true;
+  [[maybe_unused]] static constexpr bool use_data = true;
 
   ModularDefault s, sp, sl, sr;
 

@@ -4,8 +4,6 @@
 #include <iomanip>
 
 namespace {
-static double pi4 = atan(1.0);
-static double pi2 = 2.0 * pi4;
 static double sq2 = sqrt(2.0);
 static double sq3 = sqrt(3.0);
 static double beta0 = atan(sq2);

@@ -63,8 +63,8 @@ int main_hackerrank_number() {
     }
   }
   // Final
-  uint64_t lb = 1, pb = 10;
-  for (; raw_b >= pb; pb *= 10) ++lb;
+  uint64_t pb = 10;
+  while (raw_b >= pb) pb *= 10;
   LongUnsigned r1 = LongUnsigned(sL) * cR * pb * 10u;
   LongUnsigned r2 = LongUnsigned(sR) * cL;
   cout << r1 + r2 << endl;

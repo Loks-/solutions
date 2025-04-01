@@ -43,7 +43,7 @@ int main_2116() {
     } else {
       auto n = ReadU(15);
       auto index_end = index + n;
-      for (; index < index_end;) vm.push_back(Solve());
+      while (index < index_end) vm.push_back(Solve());
     }
     if (type == 0) {
       return nvector::Sum(vm);

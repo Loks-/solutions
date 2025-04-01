@@ -86,13 +86,9 @@ class Solver {
       uint64_t sc = Count(st);
       for (unsigned i = 0; i < s.l; ++i) {
         if ((i > 0) && (s.vc[i - 1] == s.vc[i])) continue;
-        unsigned k = 0, j = 0;
-        for (; j < s.vc[i]; ++j) {
-          if (s.mask & (1ull << j)) ++k;
-        }
-        for (;; ++j) {
-          if (s.mask & (1ull << j)) break;
-        }
+        unsigned j = 0;
+        while (j < s.vc[i]) ++j;
+        while (!(s.mask & (1ull << j))) ++j;
         if ((i > 0) && (j >= s.vc[i - 1])) continue;
         unsigned c = s.vc[i];
         st.vc[i] = j + 1;
@@ -178,7 +174,7 @@ int main_pen_testing() {
   // cerr << s.P(CompactState()) * T << " " << s.MapSize() << endl;
   std::vector<SolverProxy> vs(T, SolverProxy(s));
   bool all_zero = false;
-  for (unsigned it = 1; !all_zero; ++it) {
+  while (!all_zero) {
     all_zero = true;
     for (SolverProxy& s : vs) {
       unsigned u = s.Request();

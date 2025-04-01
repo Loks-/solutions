@@ -23,7 +23,8 @@ int main_cube_summation__isp_tree() {
   TTree tree;
   for (unsigned it = 0; it < T; ++it) {
     cin >> N >> M;
-    tree.Init(TPoint(0, 0, 0), TPoint(N + 1, N + 1, N + 1));
+    const TPoint pb(0, 0, 0), pe(N + 1, N + 1, N + 1);
+    tree.Init(pb, pe);
     for (unsigned im = 0; im < M; ++im) {
       string s;
       cin >> s;

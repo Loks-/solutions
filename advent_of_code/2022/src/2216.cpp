@@ -31,11 +31,9 @@ int main_2216() {
   sort(vv.begin(), vv.end(), [](auto& l, auto& r) { return l.flow > r.flow; });
   unordered_map<string, unsigned> vm;
   unsigned nbits = 0;
-  unsigned flow_total = 0;
   for (unsigned i = 0; i < vv.size(); ++i) {
     vm[vv[i].name] = i;
     if (vv[i].flow) ++nbits;
-    flow_total += vv[i].flow;
   }
   DirectedGraph g(vv.size());
   for (unsigned i = 0; i < vv.size(); ++i) {
