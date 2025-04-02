@@ -34,8 +34,8 @@ int main_evolutionary_algorithms__splay() {
         auto s1 = (s - 1) / K;
         uint64_t tt = upper_bound(vss.begin(), vss.end(), s1) - vss.begin();
         if (tt > 1) {
-          auto node = TTree::floor(vn[i], s1 + 1);
-          uint64_t tc = (node ? TTree::index(node) + 1 : size_t(0));
+          auto node = TTree::lower_bound(vn[i], s1 + 1);
+          uint64_t tc = (node ? TTree::index(node) : size_t(0));
           r += tc * (tt - tc);
         }
       }
