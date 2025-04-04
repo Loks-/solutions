@@ -9,7 +9,7 @@
 #include <functional>
 
 using TTree = bst::BaseTree<true, unsigned, std::tuple<>>;
-using TNode = TTree::TNode;
+using TNode = TTree::NodeType;
 
 int main_2118() {
   TTree tree(64);
