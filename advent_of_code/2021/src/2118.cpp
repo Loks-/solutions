@@ -2,13 +2,13 @@
 #include "common/binary_search_tree/base/left.h"
 #include "common/binary_search_tree/base/next_leaf.h"
 #include "common/binary_search_tree/base/prev_leaf.h"
-#include "common/binary_search_tree/base_tree.h"
+#include "common/binary_search_tree/unbalanced_tree.h"
 #include "common/stl/base.h"
 #include "common/vector/read_lines.h"
 
 #include <functional>
 
-using TTree = bst::BaseTree<true, unsigned, std::tuple<>>;
+using TTree = bst::UnbalancedTree<true, unsigned, std::tuple<>>;
 using TNode = TTree::NodeType;
 
 int main_2118() {
