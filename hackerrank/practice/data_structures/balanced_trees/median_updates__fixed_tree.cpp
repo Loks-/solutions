@@ -12,8 +12,8 @@
 #include <unordered_set>
 
 using TSum = bst::subtree_data::Sum<unsigned>;
-using TTree =
-    bst::StaticTree<true, unsigned, std::tuple<bst::subtree_data::Size, TSum>>;
+using TTree = bst::StaticTree<true, true, unsigned,
+                              std::tuple<bst::subtree_data::Size, TSum>>;
 using TNode = TTree::NodeType;
 
 int main_median_updates__fixed_tree() {

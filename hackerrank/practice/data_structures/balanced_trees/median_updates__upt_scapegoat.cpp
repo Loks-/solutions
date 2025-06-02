@@ -7,7 +7,7 @@
 
 #include <iomanip>
 
-using TTree = bst::ScapegoatTree<true, MetaEmpty>;
+using TTree = bst::ScapegoatTree<true, true, MetaEmpty>;
 using TNode = TTree::NodeType;
 
 int main_median_updates__upt_scapegoat() {

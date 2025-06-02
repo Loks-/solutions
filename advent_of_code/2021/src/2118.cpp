@@ -8,7 +8,7 @@
 
 #include <functional>
 
-using TTree = bst::UnbalancedTree<true, unsigned, std::tuple<>>;
+using TTree = bst::UnbalancedTree<false, true, unsigned, std::tuple<>>;
 using TNode = TTree::NodeType;
 
 int main_2118() {

@@ -6,7 +6,7 @@
 
 #include <iomanip>
 
-using TTree = bst::AVLTree<false, MetaEmpty>;
+using TTree = bst::AVLTree<true, false, MetaEmpty>;
 using TNode = TTree::NodeType;
 
 int main_find_the_running_median() {
