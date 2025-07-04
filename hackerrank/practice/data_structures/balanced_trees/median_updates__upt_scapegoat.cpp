@@ -15,7 +15,7 @@ int main_median_updates__upt_scapegoat() {
   unsigned N;
   cin >> N;
   TTree tree(N);
-  TNode* root = 0;
+  TNode* root = nullptr;
   for (unsigned i = 0; i < N; ++i) {
     char c;
     int64_t x;
@@ -25,13 +25,13 @@ int main_median_updates__upt_scapegoat() {
       root = tree.insert_new(root, {}, x);
     } else if (c == 'r') {
       TNode* node = bst::base::find(root, x);
-      if (node == 0) {
+      if (!node) {
         cout << "Wrong!" << endl;
         continue;
       }
       root = tree.remove_and_release(root, x);
     }
-    if (root == 0) {
+    if (!root) {
       cout << "Wrong!" << endl;
     } else {
       int64_t s = bst::Median<TNode, int64_t>(root);

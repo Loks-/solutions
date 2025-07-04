@@ -14,7 +14,7 @@ int main_median_updates__upt_splay() {
   unsigned N;
   cin >> N;
   TTree tree(N);
-  TNode* root = 0;
+  TNode* root = nullptr;
   for (unsigned i = 0; i < N; ++i) {
     char c;
     int64_t x;
@@ -24,13 +24,13 @@ int main_median_updates__upt_splay() {
       root = tree.insert_new(root, {}, x);
     } else if (c == 'r') {
       TNode* node = TTree::find(root, x);
-      if (node == 0) {
+      if (!node) {
         cout << "Wrong!" << endl;
         continue;
       }
       root = tree.remove_and_release(root, x);
     }
-    if (root == 0) {
+    if (!root) {
       cout << "Wrong!" << endl;
     } else {
       unsigned size = bst::subtree_data::size(root);

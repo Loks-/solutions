@@ -15,7 +15,7 @@ int main_median_updates__upt_treap() {
   unsigned N;
   cin >> N;
   TTree tree(N);
-  TNode* root = 0;
+  TNode* root = nullptr;
   for (unsigned i = 0; i < N; ++i) {
     char c;
     int64_t x;
@@ -31,7 +31,7 @@ int main_median_updates__upt_treap() {
       }
       root = tree.remove_and_release(root, x);
     }
-    if (root == 0) {
+    if (!root) {
       cout << "Wrong!" << endl;
     } else {
       int64_t s = bst::Median<TNode, int64_t>(root);
