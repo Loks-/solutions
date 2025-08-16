@@ -20,7 +20,7 @@ int main_find_the_running_median() {
     int64_t x;
     cin >> x;
     root = tree.insert_new(root, {}, x);
-    cout << bst::Median<TNode, double>(root) << endl;
+    cout << bst::utils::median<TNode, double>(root) << endl;
   }
   return 0;
 }

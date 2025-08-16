@@ -34,7 +34,7 @@ int main_median_updates() {
     if (!root) {
       cout << "Wrong!" << endl;
     } else {
-      int64_t s = bst::Median<TNode, int64_t>(root);
+      int64_t s = bst::utils::median<TNode, int64_t>(root);
       if (s & 1)
         cout << s / 2.0 << endl;
       else
