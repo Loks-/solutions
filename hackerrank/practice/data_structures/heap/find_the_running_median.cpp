@@ -1,12 +1,13 @@
 // https://www.hackerrank.com/challenges/find-the-running-median
 
-#include "common/binary_search_tree/avl_tree.h"
+#include "common/binary_search_tree.h"
 #include "common/binary_search_tree/utils/median.h"
 #include "common/stl/base.h"
+#include "common/template.h"
 
 #include <iomanip>
 
-using TTree = bst::AVLTree<true, false, MetaEmpty>;
+using TTree = BinarySearchTree<true, false, MetaEmpty>;
 using TNode = TTree::NodeType;
 
 int main_find_the_running_median() {

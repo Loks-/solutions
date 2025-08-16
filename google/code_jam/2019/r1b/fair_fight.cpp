@@ -1,13 +1,13 @@
+#include "common/binary_search_tree.h"
 #include "common/binary_search_tree/subtree_data/max.h"
 #include "common/binary_search_tree/subtree_data/min.h"
-#include "common/binary_search_tree/treap.h"
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
 using TMin = bst::subtree_data::Min<int>;
 using TMax = bst::subtree_data::Max<int>;
-using TTree =
-    bst::Treap<true, true, int, std::tuple<TMin, TMax>, std::tuple<>, int>;
+using TTree = BinarySearchTree<true, true, int, std::tuple<TMin, TMax>,
+                               std::tuple<>, int>;
 using TNode = TTree::NodeType;
 
 int main_fair_fight() {

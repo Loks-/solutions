@@ -1,8 +1,8 @@
 // https://www.hackerrank.com/challenges/airports
 
+#include "common/binary_search_tree.h"
 #include "common/binary_search_tree/subtree_data/base.h"
 #include "common/binary_search_tree/subtree_data/size.h"
-#include "common/binary_search_tree/treap.h"
 #include "common/binary_search_tree/utils/get_segment_info_by_key.h"
 #include "common/stl/base.h"
 #include "common/vector/read.h"
@@ -38,8 +38,9 @@ class PSubtreeData : public bst::subtree_data::Base {
 };
 }  // namespace
 
-using TTree = bst::Treap<true, false, MetaEmpty,
-                         std::tuple<bst::subtree_data::Size, PSubtreeData>>;
+using TTree =
+    BinarySearchTree<true, false, MetaEmpty,
+                     std::tuple<bst::subtree_data::Size, PSubtreeData>>;
 using TNode = TTree::NodeType;
 
 int main_airports() {

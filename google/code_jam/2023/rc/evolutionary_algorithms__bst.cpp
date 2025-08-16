@@ -1,14 +1,16 @@
+#include "common/binary_search_tree.h"
+#include "common/binary_search_tree/auto/merge.h"
 #include "common/binary_search_tree/subtree_data/size.h"
-#include "common/binary_search_tree/treap.h"
 #include "common/stl/base.h"
+#include "common/template.h"
 #include "common/vector/read.h"
 
 #include <queue>
 
-using TTree = bst::Treap<true, false, MetaEmpty>;
+using TTree = BinarySearchTree<true, false, MetaEmpty>;
 using TNode = TTree::NodeType;
 
-int main_evolutionary_algorithms__treap() {
+int main_evolutionary_algorithms__bst() {
   unsigned T, N, K;
   cin >> T;
   for (unsigned it = 1; it <= T; ++it) {
@@ -44,7 +46,7 @@ int main_evolutionary_algorithms__treap() {
       }
       if (i > 0) {
         unsigned j = vp[i - 1] - 1;
-        vn[j] = TTree::merge(vn[j], vn[i]);
+        vn[j] = bst::auto_::merge<TTree, TNode>(vn[j], vn[i]);
         vc[j] -= 1;
         if (vc[j] == 0) q.push(j);
       }

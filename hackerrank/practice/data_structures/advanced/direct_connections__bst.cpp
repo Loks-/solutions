@@ -1,19 +1,21 @@
 // https://www.hackerrank.com/challenges/direct-connections
 
+#include "common/binary_search_tree.h"
 #include "common/binary_search_tree/subtree_data/size.h"
 #include "common/binary_search_tree/subtree_data/sum_keys.h"
-#include "common/binary_search_tree/treap.h"
 #include "common/modular_io.h"
 #include "common/stl/base.h"
+#include "common/template.h"
 #include "common/vector/read.h"
 
 using TSumKeys = bst::subtree_data::SumKeys<uint64_t>;
 using TSize = bst::subtree_data::Size;
-using TTree = bst::Treap<true, false, MetaEmpty, std::tuple<TSumKeys, TSize>,
-                         std::tuple<>, uint64_t>;
+using TTree =
+    BinarySearchTree<true, false, MetaEmpty, std::tuple<TSumKeys, TSize>,
+                     std::tuple<>, uint64_t>;
 using TNode = TTree::NodeType;
 
-int main_direct_connections__treap() {
+int main_direct_connections__bst() {
   unsigned T, N;
   cin >> T;
   TTree tree(200000);
@@ -37,7 +39,7 @@ int main_direct_connections__treap() {
                             bst::subtree_data::size(r) * px.second);
       total += s * ModularDefault(px.first);
       TNode* m = tree.create_node({}, px.second);
-      root = tree.join(tree.join(l, m), r);
+      root = tree.join3(l, m, r);
     }
     tree.release_tree(root);
     cout << total << endl;

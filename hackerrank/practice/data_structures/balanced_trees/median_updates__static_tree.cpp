@@ -16,7 +16,7 @@ using TTree = bst::StaticTree<true, true, unsigned,
                               std::tuple<bst::subtree_data::Size, TSum>>;
 using TNode = TTree::NodeType;
 
-int main_median_updates__fixed_tree() {
+int main_median_updates__static_tree() {
   cout << setprecision(1) << fixed;
   unsigned N;
   cin >> N;

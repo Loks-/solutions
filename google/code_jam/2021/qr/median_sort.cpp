@@ -1,10 +1,10 @@
+#include "common/binary_search_tree.h"
 #include "common/binary_search_tree/base/at.h"
 #include "common/binary_search_tree/base/to_vector.h"
-#include "common/binary_search_tree/treap.h"
 #include "common/stl/base.h"
 #include "common/vector/write.h"
 
-using TTree = bst::Treap<false, true, unsigned>;
+using TTree = BinarySearchTree<false, true, unsigned>;
 using TNode = TTree::NodeType;
 
 int main_median_sort() {

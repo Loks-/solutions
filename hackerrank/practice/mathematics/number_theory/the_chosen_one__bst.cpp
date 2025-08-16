@@ -1,15 +1,16 @@
 // https://www.hackerrank.com/challenges/the-chosen-one
 
+#include "common/binary_search_tree.h"
 #include "common/binary_search_tree/subtree_data/gcd.h"
-#include "common/binary_search_tree/treap.h"
+#include "common/binary_search_tree/subtree_data/utils/propagate_to_root.h"
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
 using TGCD = bst::subtree_data::GCD<uint64_t>;
-using TTreap = bst::Treap<false, true, uint64_t, std::tuple<TGCD>>;
+using TTreap = BinarySearchTree<false, true, uint64_t, std::tuple<TGCD>>;
 using TNode = TTreap::NodeType;
 
-int main_the_chosen_one__treap() {
+int main_the_chosen_one__bst() {
   unsigned n;
   cin >> n;
   vector<uint64_t> v = nvector::Read<uint64_t>(n);

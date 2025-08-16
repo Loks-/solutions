@@ -1,16 +1,16 @@
 // https://www.hackerrank.com/challenges/median
 
+#include "common/binary_search_tree.h"
 #include "common/binary_search_tree/base/find.h"
-#include "common/binary_search_tree/treap.h"
 #include "common/binary_search_tree/utils/median.h"
 #include "common/stl/base.h"
 
 #include <iomanip>
 
-using TTree = bst::Treap<true, false, MetaEmpty>;
+using TTree = BinarySearchTree<true, true, MetaEmpty>;
 using TNode = TTree::NodeType;
 
-int main_median_updates__upf_treap() {
+int main_median_updates() {
   cout << setprecision(1) << fixed;
   unsigned N;
   cin >> N;

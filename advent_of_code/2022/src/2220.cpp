@@ -1,12 +1,12 @@
+#include "common/binary_search_tree.h"
 #include "common/binary_search_tree/base/at.h"
 #include "common/binary_search_tree/base/index.h"
-#include "common/binary_search_tree/treap.h"
 #include "common/binary_search_tree/utils/swap_intervals.h"
 #include "common/modular/arithmetic.h"
 #include "common/stl/base.h"
 #include "common/vector/read_all.h"
 
-using TTree = bst::Treap<false, true, int64_t>;
+using TTree = BinarySearchTree<false, true, int64_t>;
 using TNode = TTree::NodeType;
 
 int main_2220() {

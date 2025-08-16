@@ -1,9 +1,9 @@
-#include "common/binary_search_tree/splay_tree.h"
+#include "common/binary_search_tree.h"
 #include "common/binary_search_tree/subtree_data/size.h"
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
-using TTree = bst::SplayTree<true, MetaEmpty>;
+using TTree = BinarySearchTree<true, true, MetaEmpty>;
 using TNode = TTree::NodeType;
 
 int main_immunization_operation() {

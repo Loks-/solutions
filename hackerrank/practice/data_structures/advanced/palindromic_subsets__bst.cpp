@@ -1,9 +1,9 @@
 // https://www.hackerrank.com/challenges/palindromic-subsets
 
+#include "common/binary_search_tree.h"
 #include "common/binary_search_tree/deferred/base.h"
 #include "common/binary_search_tree/subtree_data/size.h"
 #include "common/binary_search_tree/subtree_data/sum.h"
-#include "common/binary_search_tree/treap.h"
 #include "common/binary_search_tree/utils/add_action_to_segment_by_index.h"
 #include "common/binary_search_tree/utils/get_segment_info_by_index.h"
 #include "common/linear_algebra/vector_static_size.h"
@@ -77,12 +77,12 @@ constexpr void rotate_external(Node* node, unsigned r) {
 
 }  // namespace
 
-using TTree =
-    bst::Treap<false, false, TVector, std::tuple<bst::subtree_data::Size, TSum>,
-               std::tuple<TRotate>>;
+using TTree = BinarySearchTree<false, false, TVector,
+                               std::tuple<bst::subtree_data::Size, TSum>,
+                               std::tuple<TRotate>>;
 using TNode = TTree::NodeType;
 
-int main_palindromic_subsets__treap() {
+int main_palindromic_subsets__bst() {
   unsigned n, q;
   cin >> n >> q;
   string s;
