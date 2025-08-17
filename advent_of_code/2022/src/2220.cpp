@@ -1,7 +1,7 @@
 #include "common/binary_search_tree.h"
 #include "common/binary_search_tree/base/at.h"
 #include "common/binary_search_tree/base/index.h"
-#include "common/binary_search_tree/utils/interval_rotate.h"
+#include "common/binary_search_tree/utils/rotate_interval.h"
 #include "common/modular/arithmetic.h"
 #include "common/stl/base.h"
 #include "common/vector/read_all.h"
@@ -21,9 +21,9 @@ int main_2220() {
     for (unsigned itt = 0; itt < (ab ? 10 : 1); ++itt) {
       for (auto node : nodes) {
         auto p = bst::base::index(node);
-        bst::VectorRotateLeft<TTree>(root, p);
+        bst::utils::rotate_tree_left<TTree>(root, p);
         auto pnew = modular::TArithmetic_C32U::ApplyS(node->data, n - 1);
-        bst::IntervalRotateLeft<TTree>(root, 0, pnew + 1, 1);
+        bst::utils::rotate_interval_left<TTree>(root, 0, pnew + 1, 1);
       }
     }
     TNode *p0 = nullptr;
