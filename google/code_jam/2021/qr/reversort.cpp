@@ -3,7 +3,7 @@
 #include "common/binary_search_tree/deferred/reverse.h"
 #include "common/binary_search_tree/deferred/utils/propagate_to_node.h"
 #include "common/binary_search_tree/subtree_data/size.h"
-#include "common/binary_search_tree/utils/add_action_to_segment_by_index.h"
+#include "common/binary_search_tree/utils/add_deferred_to_segment_by_index.h"
 #include "common/stl/base.h"
 #include "common/template.h"
 #include "common/vector/read.h"
@@ -30,7 +30,8 @@ int main_reversort() {
       bst::deferred::propagate_to_node(node);
       auto position = bst::base::index(node);
       c += position - i + 1;
-      r = bst::AddActionToSegmentByIndex<bst::deferred::Reverse, TTree>(
+      r = bst::utils::add_deferred_to_segment_by_index<bst::deferred::Reverse,
+                                                       TTree>(
           r, i, position + 1, MetaEmpty{});
     }
     cout << "Case #" << it + 1 << ": " << c << endl;
