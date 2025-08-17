@@ -1,7 +1,7 @@
 #include "common/binary_search_tree.h"
 #include "common/binary_search_tree/base/at.h"
 #include "common/binary_search_tree/base/index.h"
-#include "common/binary_search_tree/utils/swap_intervals.h"
+#include "common/binary_search_tree/utils/interval_rotate.h"
 #include "common/modular/arithmetic.h"
 #include "common/stl/base.h"
 #include "common/vector/read_all.h"
