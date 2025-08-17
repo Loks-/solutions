@@ -1,6 +1,6 @@
+#include "common/binary_search_tree/subtree_data/balance/treap_height.h"
 #include "common/binary_search_tree/subtree_data/base.h"
 #include "common/binary_search_tree/subtree_data/size.h"
-#include "common/binary_search_tree/subtree_data/treap_height.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/modular_io.h"
 #include "common/stl/base.h"

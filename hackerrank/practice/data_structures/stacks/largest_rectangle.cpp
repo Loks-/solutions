@@ -1,7 +1,7 @@
 // https://www.hackerrank.com/challenges/largest-rectangle
 
+#include "common/binary_search_tree/subtree_data/balance/treap_height.h"
 #include "common/binary_search_tree/subtree_data/size.h"
-#include "common/binary_search_tree/subtree_data/treap_height.h"
 #include "common/binary_search_tree/treap.h"
 #include "common/stl/base.h"
 
