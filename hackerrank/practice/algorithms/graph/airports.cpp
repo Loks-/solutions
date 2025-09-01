@@ -13,6 +13,7 @@ class PSubtreeData : public bst::subtree_data::Base {
   using Self = PSubtreeData;
 
   [[maybe_unused]] static constexpr bool use_keys = true;
+  [[maybe_unused]] static constexpr bool use_tree_structure = true;
 
   int64_t l, r, d;
 
