@@ -66,9 +66,8 @@ int main_airports() {
       } else {
         head = tree.insert_new(head, {}, v[i]);
       }
-      typename TNode::SubtreeDataType subtree_data;
-      head = bst::utils::get_segment_data_by_key<TTree>(head, r - d + 1, l + d,
-                                                        subtree_data);
+      auto subtree_data =
+          bst::utils::get_segment_data_by_key<TTree>(head, r - d + 1, l + d);
       int64_t lrd = max<int64_t>(d - (r - l), 0);
       if (bst::subtree_data::size(subtree_data) == 0) {
         cout << " " << lrd;

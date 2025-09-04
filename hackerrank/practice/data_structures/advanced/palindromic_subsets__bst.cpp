@@ -100,8 +100,7 @@ int main_palindromic_subsets__bst() {
           root, a, b + 1, c);
     } else if (t == 2) {
       cin >> a >> b;
-      TTree::SubtreeDataType info;
-      root = bst::utils::get_segment_data_by_index<TTree>(root, a, b + 1, info);
+      auto info = bst::utils::get_segment_data_by_index<TTree>(root, a, b + 1);
       unsigned nsum = 0, nnonzero = 0;
       for (unsigned j = 0; j < 26; ++j) {
         if (TSum::get(info)(j)) {
