@@ -3,7 +3,7 @@
 #include "common/binary_search_tree.h"
 #include "common/binary_search_tree/subtree_data/base.h"
 #include "common/binary_search_tree/subtree_data/size.h"
-#include "common/binary_search_tree/utils/get_segment_info_by_key.h"
+#include "common/binary_search_tree/utils/get_segment_data_by_key.h"
 #include "common/stl/base.h"
 #include "common/vector/read.h"
 
@@ -67,8 +67,8 @@ int main_airports() {
         head = tree.insert_new(head, {}, v[i]);
       }
       typename TNode::SubtreeDataType subtree_data;
-      head =
-          bst::GetSegmentInfoByKey<TTree>(head, r - d + 1, l + d, subtree_data);
+      head = bst::utils::get_segment_data_by_key<TTree>(head, r - d + 1, l + d,
+                                                        subtree_data);
       int64_t lrd = max<int64_t>(d - (r - l), 0);
       if (bst::subtree_data::size(subtree_data) == 0) {
         cout << " " << lrd;

@@ -5,7 +5,7 @@
 #include "common/binary_search_tree/subtree_data/size.h"
 #include "common/binary_search_tree/subtree_data/sum.h"
 #include "common/binary_search_tree/utils/add_deferred_to_segment_by_index.h"
-#include "common/binary_search_tree/utils/get_segment_info_by_index.h"
+#include "common/binary_search_tree/utils/get_segment_data_by_index.h"
 #include "common/linear_algebra/vector_static_size.h"
 #include "common/modular_io.h"
 #include "common/stl/base.h"
@@ -101,7 +101,7 @@ int main_palindromic_subsets__bst() {
     } else if (t == 2) {
       cin >> a >> b;
       TTree::SubtreeDataType info;
-      root = bst::GetSegmentInfoByIndex<TTree>(root, a, b + 1, info);
+      root = bst::utils::get_segment_data_by_index<TTree>(root, a, b + 1, info);
       unsigned nsum = 0, nnonzero = 0;
       for (unsigned j = 0; j < 26; ++j) {
         if (TSum::get(info)(j)) {
